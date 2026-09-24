@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ahnaf Ralip Jovian — Frontend Developer & UI/UX Designer</title>
+  <meta name="description" content="Portofolio Ahnaf Ralip Jovian — pelajar RPL SMK Telkom Purwokerto, Frontend Developer & UI/UX Designer. Lihat projek, sertifikat, dan pengalaman saya." />
+  <meta property="og:title" content="Ahnaf Ralip Jovian — Portofolio" />
+  <meta property="og:description" content="Frontend Developer & UI/UX Designer. Projek web, game, UI/UX, dan desain grafis." />
+  <meta property="og:image" content="assets/img/profile.jpg" />
+  <meta name="theme-color" content="#0b0b0f" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='16' fill='%230b0b0f'/><text x='50%' y='54%' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-weight='700' font-size='30' fill='%23a3e635'>AJ</text></svg>" />
+
+  <script>
+    // Terapkan tema sebelum halaman tampil supaya tidak berkedip
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem("theme"); } catch (e) {}
+      if (!t) t = window.matchMedia && matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", t);
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/devicon.min.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Lewati ke konten</a>
+
+  <!-- ============ NAVBAR ============ -->
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a href="#home" class="nav__logo" aria-label="Beranda">
+        <span class="nav__logo-mark">AJ</span>
+        <span class="nav__logo-text">arjjovian</span>
+      </a>
+
+      <nav class="nav__links" id="navLinks" aria-label="Navigasi utama">
+        <a href="#about">Tentang</a>
+        <a href="#skills">Skill</a>
+        <a href="#projects">Projek</a>
+        <a href="#certificates" data-section="certificates">Sertifikat</a>
+        <a href="#journey">Perjalanan</a>
+        <a href="#contact" class="nav__cta-mobile">Kontak</a>
+      </nav>
+
+      <div class="nav__actions">
+        <button class="icon-btn" id="themeToggle" type="button" aria-label="Ganti tema">
+          <span data-icon="sun" class="only-dark"></span>
+          <span data-icon="moon" class="only-light"></span>
+        </button>
+        <a href="#contact" class="btn btn--primary btn--sm nav__cta">Hubungi Saya</a>
+        <button class="icon-btn nav__burger" id="navBurger" type="button" aria-label="Buka menu" aria-expanded="false" aria-controls="navLinks">
+          <span data-icon="menu"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="home">
+      <div class="hero__glow" aria-hidden="true"></div>
+      <div class="container hero__inner">
+        <div class="hero__text">
+          <p class="badge reveal" id="availableBadge"><span class="badge__dot"></span>Terbuka untuk kolaborasi</p>
+          <h1 class="hero__title reveal">
+            Halo, saya <span class="nowrap"><span class="accent" data-bind="nickname"></span> 👋</span><br />
+            <span class="hero__role" data-bind="role"></span>
+          </h1>
+          <p class="hero__desc reveal" data-bind="tagline"></p>
+          <div class="hero__buttons reveal">
+            <a href="#projects" class="btn btn--primary">Lihat Projek <span data-icon="arrowDown"></span></a>
+            <a href="#" class="btn btn--ghost" id="cvButton" download>Download CV <span data-icon="download"></span></a>
+            <a href="#contact" class="btn btn--ghost" id="contactButton">Hubungi Saya</a>
+          </div>
+          <div class="socials reveal" id="heroSocials"></div>
+        </div>
+
+        <div class="hero__visual reveal">
+          <div class="hero__photo">
+            <img id="heroPhoto" alt="Foto Ahnaf Ralip Jovian" width="900" height="1359" />
+          </div>
+          <div class="hero__chip hero__chip--1"><span data-icon="code"></span> Frontend</div>
+          <div class="hero__chip hero__chip--2"><span data-icon="pen"></span> UI/UX</div>
+          <div class="hero__chip hero__chip--3"><span data-icon="gamepad"></span> Game Dev</div>
+        </div>
+      </div>
+
+      <div class="container">
+        <dl class="stats reveal" id="stats"></dl>
+      </div>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section class="section" id="about">
+      <div class="container about">
+        <div class="about__photo reveal">
+          <img id="aboutPhoto" alt="Ahnaf Ralip Jovian" loading="lazy" width="900" height="1200" />
+        </div>
+        <div class="about__body">
+          <p class="eyebrow reveal">Tentang Saya</p>
+          <h2 class="section__title reveal">Belajar, membangun, dan terus berkembang.</h2>
+          <div class="about__text reveal" id="aboutText"></div>
+          <dl class="facts reveal" id="facts"></dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SKILLS ============ -->
+    <section class="section section--alt" id="skills">
+      <div class="container">
+        <div class="section__head">
+          <p class="eyebrow reveal">Skill & Tools</p>
+          <h2 class="section__title reveal">Teknologi yang saya gunakan</h2>
+        </div>
+        <div class="skills" id="skillsGrid"></div>
+      </div>
+    </section>
+
+    <!-- ============ PROJECTS ============ -->
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section__head section__head--row">
+          <div>
+            <p class="eyebrow reveal">Projek</p>
+            <h2 class="section__title reveal">Karya yang pernah saya buat</h2>
+          </div>
+          <div class="filters reveal" id="projectFilters" role="tablist" aria-label="Filter kategori projek"></div>
+        </div>
+        <div class="projects" id="projectsGrid"></div>
+      </div>
+    </section>
+
+    <!-- ============ CERTIFICATES ============ -->
+    <section class="section section--alt" id="certificates">
+      <div class="container">
+        <div class="section__head">
+          <p class="eyebrow reveal">Sertifikat</p>
+          <h2 class="section__title reveal">Sertifikat & pencapaian</h2>
+        </div>
+        <div class="certs" id="certsGrid"></div>
+      </div>
+    </section>
+
+    <!-- ============ EXPERIENCE & EDUCATION ============ -->
+    <section class="section" id="journey">
+      <div class="container">
+        <div class="section__head">
+          <p class="eyebrow reveal">Perjalanan</p>
+          <h2 class="section__title reveal">Pengalaman & pendidikan</h2>
+        </div>
+        <div class="journey" id="journeyGrid"></div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="section section--alt" id="contact">
+      <div class="container contact">
+        <div class="contact__info">
+          <p class="eyebrow reveal">Kontak</p>
+          <h2 class="section__title reveal">Ayo bekerja sama!</h2>
+          <p class="contact__desc reveal">
+            Punya ide projek, tawaran kolaborasi, atau sekadar ingin berbagi ide? Jangan ragu untuk menghubungi saya — saya akan membalas secepatnya.
+          </p>
+          <ul class="contact__list reveal" id="contactList"></ul>
+        </div>
+
+        <form class="contact__form card reveal" id="contactForm" novalidate>
+          <div class="field">
+            <label for="cfName">Nama</label>
+            <input id="cfName" name="name" type="text" placeholder="Nama kamu" autocomplete="name" required />
+          </div>
+          <div class="field">
+            <label for="cfMessage">Pesan</label>
+            <textarea id="cfMessage" name="message" rows="5" placeholder="Halo Jovian, saya ingin..." required></textarea>
+          </div>
+          <p class="form__error" id="cfError" role="alert" hidden>Isi nama dan pesan dulu, ya.</p>
+          <button type="submit" class="btn btn--primary btn--block" id="cfSubmit">
+            Kirim Pesan <span data-icon="send"></span>
+          </button>
+          <p class="form__hint" id="cfHint"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>© <span id="year"></span> Ahnaf Ralip Jovian. Dibuat dengan HTML, CSS & JavaScript.</p>
+      <a href="#home" class="footer__top">Kembali ke atas <span data-icon="arrowUp"></span></a>
+    </div>
+  </footer>
+
+  <!-- ============ PROJECT MODAL ============ -->
+  <div class="modal" id="projectModal" hidden>
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="icon-btn modal__close" type="button" aria-label="Tutup" data-close><span data-icon="x"></span></button>
+      <div class="modal__gallery">
+        <img id="modalImage" alt="" />
+        <button class="icon-btn modal__nav modal__nav--prev" type="button" aria-label="Gambar sebelumnya" id="modalPrev"><span data-icon="chevronLeft"></span></button>
+        <button class="icon-btn modal__nav modal__nav--next" type="button" aria-label="Gambar berikutnya" id="modalNext"><span data-icon="chevronRight"></span></button>
+      </div>
+      <div class="modal__thumbs" id="modalThumbs"></div>
+      <div class="modal__body">
+        <p class="modal__meta" id="modalMeta"></p>
+        <h3 class="modal__title" id="modalTitle"></h3>
+        <p class="modal__desc" id="modalDesc"></p>
+        <div class="tags" id="modalTools"></div>
+        <div class="modal__links" id="modalLinks"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ CERTIFICATE LIGHTBOX ============ -->
+  <div class="modal" id="certModal" hidden>
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__dialog modal__dialog--image" role="dialog" aria-modal="true" aria-labelledby="certTitle">
+      <button class="icon-btn modal__close" type="button" aria-label="Tutup" data-close><span data-icon="x"></span></button>
+      <img id="certImage" alt="" />
+      <div class="modal__body">
+        <h3 class="modal__title" id="certTitle"></h3>
+        <p class="modal__meta" id="certMeta"></p>
+        <div class="modal__links" id="certLinks"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
