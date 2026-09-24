@@ -144,7 +144,7 @@ const PROJECTS = [
     description:
       "Desain website toko mainan online. Pembeli bisa mencari dan memfilter mainan, menyimpan ke wishlist, memasukkan ke keranjang, lalu memesan untuk diantar ke alamat. Ada juga blog parenting dan newsletter. Di sisi admin, pemilik toko bisa mengelola produk, pesanan, stok, supplier, promo & voucher, pelanggan, staff & role, sampai laporan.",
     tools: ["Figma", "UI/UX", "Web Design"],
-    images: ["cover.jpg", "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg"],
+    images: ["cover.jpg", "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg", "7.jpg", "8.jpg", "9.jpg", "10.jpg"],
     links: { figma: "https://www.figma.com/design/fk15PifsUaHqNu8QUm5V2R/Baru-Raya-toys" },
     featured: true,
   },
@@ -158,7 +158,7 @@ const PROJECTS = [
     description:
       "Desain website toko alat berat dan mesin industri. Isinya katalog per kategori, detail produk lengkap dengan spesifikasi, fitur bandingkan produk, keranjang, dan checkout tiga langkah — mulai dari pilihan kargo atau armada alat berat, transfer bank, virtual account, sampai cicilan dan leasing.",
     tools: ["Figma", "UI/UX", "E-commerce"],
-    images: ["cover.jpg", "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg"],
+    images: ["cover.jpg", "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg", "7.jpg", "8.jpg"],
     links: { figma: "https://www.figma.com/design/zIfR5hjhx405wCwfKF3Uy0/PSAJ-Mesin" },
     featured: true,
   },
@@ -315,40 +315,5 @@ const CERTIFICATES = [
     tags: ["Microsoft Azure", "Cloud AI"],
     images: ["azure-ai-900-1.jpg"],
     link: "",
-  },
-];
-
-/* Tech & Stack. icon = class Devicon (https://devicon.dev), boleh kosong */
-const STACK = [
-  {
-    group: "Design",
-    items: [
-      { name: "Figma", icon: "devicon-figma-plain" },
-      { name: "Illustrator", icon: "devicon-illustrator-plain" },
-      { name: "Canva", icon: "devicon-canva-original" },
-      { name: "CapCut", icon: "" },
-    ],
-  },
-  {
-    group: "Languages",
-    items: [
-      { name: "HTML", icon: "devicon-html5-plain" },
-      { name: "CSS", icon: "devicon-css3-plain" },
-      { name: "JavaScript", icon: "devicon-javascript-plain" },
-      { name: "PHP", icon: "devicon-php-plain" },
-      { name: "Kotlin", icon: "devicon-kotlin-plain" },
-      { name: "C#", icon: "devicon-csharp-plain" },
-    ],
-  },
-  { group: "Mobile & Game", items: [{ name: "Android Studio", icon: "devicon-androidstudio-plain" }, { name: "Unity", icon: "devicon-unity-plain" }] },
-  { group: "Data", items: [{ name: "MySQL", icon: "devicon-mysql-plain" }] },
-  {
-    group: "Tools",
-    items: [
-      { name: "VS Code", icon: "devicon-vscode-plain" },
-      { name: "Git", icon: "devicon-git-plain" },
-      { name: "GitHub", icon: "devicon-github-original" },
-      { name: "Laragon", icon: "" },
-    ],
   },
 ];

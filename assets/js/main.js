@@ -230,11 +230,10 @@
 
   /* ---------- Stats (angka menghitung naik) ---------- */
   function renderStats() {
-    const tools = STACK.reduce((n, g) => n + g.items.length, 0);
     const stats = [
       { value: PROJECTS.length, suffix: "+", label: "Projek selesai" },
       { value: SERVICES.filter((s) => !s.cta).length, suffix: "", label: "Bidang keahlian" },
-      { value: tools, suffix: "+", label: "Tools & bahasa" },
+      { value: new Set(PROJECTS.map((p) => p.category)).size, suffix: "", label: "Kategori karya" },
       CERTIFICATES.length
         ? { value: CERTIFICATES.length, suffix: "", label: "Sertifikat" }
         : { value: 100, suffix: "%", label: "Semangat belajar" },
@@ -262,17 +261,6 @@
     io.observe(el);
   }
 
-  /* ---------- Stack ---------- */
-  function renderStack() {
-    $("#stackGrid").innerHTML = STACK.map(
-      (g) => `
-      <div class="stack__group reveal">
-        <h3>${esc(g.group)}</h3>
-        <div class="stack__list">${g.items.map((t) => `<span class="tool">${t.icon ? `<i class="${esc(t.icon)}" aria-hidden="true"></i>` : '<span class="tool__dot"></span>'}${esc(t.name)}</span>`).join("")}</div>
-      </div>`
-    ).join("");
-  }
-
   /* ---------- CV ---------- */
   function renderCV() {
     const actions = [];
@@ -292,7 +280,6 @@
       paper.innerHTML = `<img src="${esc(PROFILE.cvPreview)}" alt="Pratinjau CV ${esc(PROFILE.name)}" loading="lazy" />`;
       return;
     }
-    const tools = STACK.flatMap((g) => g.items.map((t) => t.name));
     paper.innerHTML = `
       <div class="paper__bar"></div>
       <div class="paper__head">
@@ -303,7 +290,7 @@
         <div><h4>Pendidikan</h4><ul>${EDUCATION.map((e) => `<li>${esc(e.school)}</li>`).join("")}</ul></div>
         <div><h4>Keahlian</h4><ul>${SERVICES.filter((s) => !s.cta).map((s) => `<li>${esc(s.title)}</li>`).join("")}</ul></div>
         <div><h4>Projek</h4><ul>${PROJECTS.slice(0, 4).map((p) => `<li>${esc(p.title)}</li>`).join("")}</ul></div>
-        <div><h4>Tools</h4><ul>${tools.slice(0, 6).map((t) => `<li>${esc(t)}</li>`).join("")}</ul></div>
+        <div><h4>Kontak</h4><ul>${socials().slice(0, 4).map((c) => `<li>${esc(c.label)}</li>`).join("")}</ul></div>
       </div>`;
   }
 
@@ -465,7 +452,6 @@
   renderWork();
   renderCertificates();
   renderStats();
-  renderStack();
   renderCV();
   renderContact();
   initNav();

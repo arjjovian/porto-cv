@@ -1,7 +1,7 @@
 # Portofolio — Ahnaf Ralip Jovian
 
 Website portofolio pribadi bertema gelap yang kalem (tanpa warna mencolok): hero, about, services (keahlian & jasa),
-education, selected work, certificates, stats, tech stack, CV, dan kontak.
+education, selected work, certificates, stats, CV, dan kontak.
 Dibuat dengan HTML, CSS, dan JavaScript murni. Tidak perlu database atau build tool.
 
 ## Menjalankan
@@ -76,7 +76,6 @@ Versi di web sengaja tidak mencantumkan alamat rumah lengkap.
 ## Bagian lain di data.js
 
 - `SERVICES`: kartu di section Services. Item dengan `cta: true` tampil sebagai kartu **Jasa** yang lebar.
-- `STACK`: kelompok tools di section Tech stack. `icon` memakai class dari [devicon.dev](https://devicon.dev).
 - `MARQUEE`: teks berjalan di bawah hero.
 - `PROFILE.heroLines`: tiga baris judul besar di hero.
 - Warna tombol utama (`--accent`) dan aksen dekoratif abu-abu (`--soft`) ada di bagian atas `assets/css/style.css`.
