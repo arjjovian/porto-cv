@@ -1,6 +1,7 @@
 # Portofolio — Ahnaf Ralip Jovian
 
-Website portofolio pribadi: profil, skill, projek, sertifikat, pengalaman, dan kontak.
+Website portofolio pribadi bergaya monokrom editorial: hero, about, what I do (keahlian & jasa),
+education, selected work, certificates, tech stack, CV, dan kontak.
 Dibuat dengan HTML, CSS, dan JavaScript murni. Tidak perlu database atau build tool.
 
 ## Menjalankan
@@ -31,9 +32,9 @@ certificates/         gambar sertifikat
 {
   slug: "nama-projek",            // sama dengan nama folder
   title: "Nama Projek",
-  category: "Aplikasi",           // Web | Aplikasi | Game | UI/UX | Desain Grafis
+  category: "Mobile",             // Web | Mobile | Game | UI/UX | Design
+  role: "UI/UX & Development",    // keterangan kecil di baris projek
   year: "2026",
-  summary: "Satu kalimat singkat untuk kartu.",
   description: "Penjelasan lengkap yang muncul saat kartu diklik.",
   tools: ["Kotlin", "Firebase"],
   images: ["cover.jpg", "1.jpg", "2.jpg"],
@@ -43,7 +44,6 @@ certificates/         gambar sertifikat
     figma: "https://figma.com/...",
     download: "https://.../app.apk",
   },
-  featured: true,                 // opsional: tampil paling depan
 },
 ```
 
@@ -53,8 +53,29 @@ Masukkan gambarnya ke `certificates/`, lalu tambahkan datanya di array `CERTIFIC
 Section **Sertifikat** otomatis muncul begitu array ini ada isinya.
 
 ```js
-{ title: "Nama Sertifikat", issuer: "Penerbit", date: "Maret 2026", image: "nama-file.jpg", link: "" },
+{
+  title: "Nama Sertifikat",
+  issuer: "Penerbit",
+  year: "2026",
+  description: "Penjelasan singkat sertifikat.",
+  tags: ["HTML", "CSS"],
+  image: "nama-file.jpg",
+  link: "",
+},
 ```
+
+## Menambah CV
+
+Taruh file PDF di `assets/`, misalnya `assets/cv-ahnaf-ralip-jovian.pdf`. Setelah itu isi `PROFILE.cv` dan `PROFILE.cvUpdated` di `data.js`.
+Tombol **Lihat CV** dan **Download PDF** akan muncul otomatis.
+
+## Bagian lain di data.js
+
+- `SERVICES`: daftar di section What I Do. Pakai `cta: true` untuk menampilkan tombol "Pesan Sekarang".
+- `STACK`: baris-baris di section Tech & Stack.
+- `MARQUEE`: teks pada pita berjalan.
+- `PROFILE.heroLeft` / `heroRight`: dua kata besar di hero.
+- `PROFILE.statement`: kalimat besar yang menyala saat di-scroll.
 
 ## Tips gambar
 

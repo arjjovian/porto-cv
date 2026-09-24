@@ -6,233 +6,345 @@
 
   document.documentElement.classList.add("js");
 
-  /* ---------- Ikon (SVG inline) ---------- */
-  const stroke = (d) =>
-    `<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg>`;
-  const fill = (d) => `<svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">${d}</svg>`;
-
-  const ICONS = {
-    sun: stroke('<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>'),
-    moon: stroke('<path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>'),
-    menu: stroke('<path d="M4 6h16M4 12h16M4 18h16"/>'),
-    x: stroke('<path d="M18 6 6 18M6 6l12 12"/>'),
-    arrowDown: stroke('<path d="M12 5v14M19 12l-7 7-7-7"/>'),
-    arrowUp: stroke('<path d="M12 19V5M5 12l7-7 7 7"/>'),
-    arrowUpRight: stroke('<path d="M7 17 17 7M7 7h10v10"/>'),
-    download: stroke('<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>'),
-    send: stroke('<path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/>'),
-    code: stroke('<path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/>'),
-    pen: stroke('<path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/>'),
-    gamepad: stroke('<path d="M6 12h4M8 10v4M15 13h.01M18 11h.01"/><rect x="2" y="6" width="20" height="12" rx="4"/>'),
-    images: stroke('<rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.09-3.09a2 2 0 0 0-2.82 0L6 21"/>'),
-    external: stroke('<path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>'),
-    chevronLeft: stroke('<path d="m15 18-6-6 6-6"/>'),
-    chevronRight: stroke('<path d="m9 18 6-6-6-6"/>'),
-    briefcase: stroke('<rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>'),
-    school: stroke('<path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/>'),
-    mail: stroke('<rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/>'),
-    github: fill('<path d="M12 .5C5.73.5.5 5.73.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.56-.29-5.25-1.28-5.25-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.7 5.4-5.27 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5Z"/>'),
-    instagram: stroke('<rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/>'),
-    linkedin: fill('<path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0Z"/>'),
-    whatsapp: fill('<path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.39-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.18-1.41-.08-.13-.27-.2-.57-.35M12.05 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 0 1 2.89 6.99c0 5.45-4.43 9.88-9.88 9.88m8.41-18.3A11.81 11.81 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.16-3.48-8.41"/>'),
-  };
-  const icon = (name) => ICONS[name] || "";
-
   /* ---------- Util ---------- */
   const $ = (sel, root = document) => root.querySelector(sel);
   const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
   const esc = (s) =>
     String(s == null ? "" : s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
-  const store = {
-    get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
-    set(k, v) { try { localStorage.setItem(k, v); } catch (e) { /* abaikan */ } },
-  };
-
+  const pad = (n) => String(n).padStart(2, "0");
+  const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const projectImg = (p, file) => `projects/${p.slug}/${file}`;
 
-  /* ---------- Kontak ---------- */
-  const contactLinks = () => {
+  const socials = () => {
     const c = CONTACT;
     const out = [];
-    if (c.whatsapp) out.push({ key: "whatsapp", label: "WhatsApp", value: "+" + c.whatsapp, href: `https://wa.me/${c.whatsapp}` });
-    if (c.email) out.push({ key: "mail", label: "Email", value: c.email, href: `mailto:${c.email}` });
-    if (c.instagram) out.push({ key: "instagram", label: "Instagram", value: "@" + c.instagram, href: `https://instagram.com/${c.instagram}` });
-    if (c.linkedin) out.push({ key: "linkedin", label: "LinkedIn", value: c.linkedin, href: `https://www.linkedin.com/in/${c.linkedin}` });
-    if (c.github) out.push({ key: "github", label: "GitHub", value: c.github, href: `https://github.com/${c.github}` });
+    if (c.whatsapp) out.push({ label: "WhatsApp", href: `https://wa.me/${c.whatsapp}` });
+    if (c.instagram) out.push({ label: "Instagram", href: `https://instagram.com/${c.instagram}` });
+    if (c.github) out.push({ label: "GitHub", href: `https://github.com/${c.github}` });
+    if (c.linkedin) out.push({ label: "LinkedIn", href: `https://www.linkedin.com/in/${c.linkedin}` });
+    if (c.email) out.push({ label: "Email", href: `mailto:${c.email}` });
+    return out;
+  };
+  const bracketLink = (l, extra = "") =>
+    `<a class="bracket" href="${esc(l.href)}"${/^https?:/.test(l.href) ? ' target="_blank" rel="noopener"' : ""}${extra}>${esc(l.label)}</a>`;
+
+  /* ---------- Profil & teks umum ---------- */
+  function renderProfile() {
+    $$("[data-bind]").forEach((el) => { el.textContent = PROFILE[el.dataset.bind] || ""; });
+    $("#year").textContent = new Date().getFullYear();
+
+    const links = socials();
+    $("#menuSocials").innerHTML = links.map((l) => bracketLink(l)).join("");
+    $("#footerSocials").innerHTML = links.map((l) => `<li>${bracketLink(l)}</li>`).join("");
+    $("#footerServices").innerHTML = SERVICES.map((s, i) => `<li><a class="bracket" href="#services" data-svc="${i}">${esc(s.title)}</a></li>`).join("");
+  }
+
+  /* ---------- Hero ---------- */
+  function renderHero() {
+    $("#heroPhoto").src = PROFILE.photo;
+    const shots = PROJECTS.filter((p) => p.images && p.images.length).slice(0, 4);
+    $("#heroShots").innerHTML = shots.map((p) => `<div class="shot"><img src="${esc(projectImg(p, p.images[0]))}" alt="" /></div>`).join("");
+
+    if (!finePointer || reduceMotion) return;
+    const stage = $("#heroStage");
+    const hero = $("#home");
+    hero.addEventListener("mousemove", (e) => {
+      const r = hero.getBoundingClientRect();
+      stage.style.setProperty("--mx", ((e.clientX - r.left) / r.width - 0.5) * 2);
+      stage.style.setProperty("--my", ((e.clientY - r.top) / r.height - 0.5) * 2);
+    });
+    hero.addEventListener("mouseleave", () => { stage.style.setProperty("--mx", 0); stage.style.setProperty("--my", 0); });
+  }
+
+  /* ---------- Pita berjalan ---------- */
+  function renderMarquees() {
+    $$("[data-marquee]").forEach((track) => {
+      const words = track.dataset.marquee === "stack" ? STACK.flatMap((g) => g.items) : MARQUEE;
+      const set = Array(4).fill(words).flat().map((w) => `<span class="tape__item">${esc(w)}</span>`).join("");
+      track.innerHTML = set + set; // dua set identik supaya loop mulus
+    });
+  }
+
+  /* ---------- What I Do ---------- */
+  const serviceDetail = (s) => `
+    <span class="chip">${s.cta ? "Jasa" : "Deliverables"}</span>
+    <p class="panel__lead">${esc(s.lead)}</p>
+    <ul class="points">${s.points.map((p) => `<li>${esc(p)}</li>`).join("")}</ul>
+    ${s.cta ? `<a href="#contact" class="bracket panel__cta">Pesan Sekarang</a>` : ""}`;
+
+  let activeService = -1;
+  function setService(i) {
+    if (i === activeService) return;
+    activeService = i;
+    $$(".svc").forEach((li, k) => {
+      li.classList.toggle("is-active", k === i);
+      $(".svc__btn", li).setAttribute("aria-expanded", k === i);
+    });
+    const s = SERVICES[i];
+    $("#servicesPanel").innerHTML = `
+      <div class="panel">
+        ${s.image ? `<div class="panel__bg"><img src="${esc(s.image)}" alt="" /></div>` : ""}
+        <div class="panel__body">${serviceDetail(s)}</div>
+      </div>`;
+  }
+
+  function renderServices() {
+    $("#servicesList").innerHTML = SERVICES.map(
+      (s, i) => `
+      <li class="svc">
+        <button type="button" class="svc__btn" data-i="${i}" aria-expanded="false"><span class="svc__name">${esc(s.title)}</span></button>
+        <div class="svc__detail panel"><div class="panel__body">${serviceDetail(s)}</div></div>
+      </li>`
+    ).join("");
+    setService(0);
+
+    const list = $("#servicesList");
+    list.addEventListener("click", (e) => {
+      const b = e.target.closest(".svc__btn");
+      if (b) setService(+b.dataset.i);
+    });
+    if (finePointer) {
+      list.addEventListener("mouseover", (e) => {
+        const b = e.target.closest(".svc__btn");
+        if (b) setService(+b.dataset.i);
+      });
+    }
+    $("#footerServices").addEventListener("click", (e) => {
+      const a = e.target.closest("[data-svc]");
+      if (a) setService(+a.dataset.svc);
+    });
+  }
+
+  /* ---------- Education ---------- */
+  function renderEducation() {
+    $("#eduPhoto").src = PROFILE.photoAlt || PROFILE.photo;
+    $("#eduStory").textContent = EDUCATION_STORY;
+    $("#eduList").innerHTML = EDUCATION.map(
+      (e) => `
+      <li class="edu-item reveal">
+        <p class="edu-item__school"><span class="dots"></span>${esc(e.school)}</p>
+        <div>
+          <p class="edu-item__meta">${esc([e.level, e.period].filter(Boolean).join(" · "))}</p>
+          ${e.description ? `<p class="edu-item__desc">${esc(e.description)}</p>` : ""}
+          ${e.map ? `<a class="link-arrow" href="${esc(e.map)}" target="_blank" rel="noopener">Lihat Lokasi ↗</a>` : ""}
+        </div>
+      </li>`
+    ).join("");
+  }
+
+  /* ---------- Work ---------- */
+  function renderWork() {
+    const keys = Object.keys(PROJECT_CATEGORIES).filter((k) => PROJECTS.some((p) => p.category === k));
+    const count = (k) => (k === "all" ? PROJECTS.length : PROJECTS.filter((p) => p.category === k).length);
+    const filters = $("#filters");
+    filters.innerHTML = ["all", ...keys]
+      .map(
+        (k, i) =>
+          `<button type="button" role="tab" class="filter${i === 0 ? " is-active" : ""}" aria-selected="${i === 0}" data-filter="${esc(k)}">${esc(k === "all" ? "All" : PROJECT_CATEGORIES[k])}<sup>${count(k)}</sup></button>`
+      )
+      .join("");
+
+    $("#workList").innerHTML = PROJECTS.map(
+      (p, i) => `
+      <li class="work-item" data-category="${esc(p.category)}">
+        <button type="button" class="work-row" data-i="${i}" data-cursor="View" aria-label="Lihat projek ${esc(p.title)}">
+          <span class="work-row__num">(${pad(i + 1)})</span>
+          ${p.images && p.images.length ? `<span class="work-row__thumb"><img src="${esc(projectImg(p, p.images[0]))}" alt="" loading="lazy" /></span>` : ""}
+          <span class="work-row__title">${esc(p.title)}</span>
+          <span class="work-row__role">${esc(PROJECT_CATEGORIES[p.category] || p.category)} — ${esc(p.role || "")}</span>
+          <span class="work-row__year">${esc(p.year || "")}</span>
+          <span class="work-row__arrow">↗</span>
+        </button>
+      </li>`
+    ).join("");
+
+    filters.addEventListener("click", (e) => {
+      const b = e.target.closest(".filter");
+      if (!b) return;
+      $$(".filter", filters).forEach((x) => { x.classList.toggle("is-active", x === b); x.setAttribute("aria-selected", x === b); });
+      const f = b.dataset.filter;
+      $$(".work-item").forEach((li) => li.classList.toggle("is-hidden", f !== "all" && li.dataset.category !== f));
+    });
+
+    $("#workList").addEventListener("click", (e) => {
+      const row = e.target.closest(".work-row");
+      if (!row) return;
+      const p = PROJECTS[+row.dataset.i];
+      openModal(
+        {
+          images: (p.images || []).map((f) => projectImg(p, f)),
+          meta: [PROJECT_CATEGORIES[p.category] || p.category, p.year].filter(Boolean).join(" · "),
+          title: p.title,
+          desc: p.description,
+          tags: p.tools,
+          links: projectLinks(p.links),
+        },
+        row
+      );
+    });
+
+    // Preview gambar yang mengikuti kursor
+    if (!finePointer) return;
+    const preview = $("#workPreview");
+    const img = $("img", preview);
+    let x = 0, y = 0, cx = 0, cy = 0, raf = 0;
+    const loop = () => {
+      cx += (x - cx) * 0.18; cy += (y - cy) * 0.18;
+      preview.style.left = cx + "px"; preview.style.top = cy + "px";
+      raf = Math.abs(x - cx) + Math.abs(y - cy) > 0.5 ? requestAnimationFrame(loop) : 0;
+    };
+    $("#workList").addEventListener("mousemove", (e) => {
+      x = e.clientX + 190; y = e.clientY;
+      if (!preview.classList.contains("is-visible")) { cx = x; cy = y; }
+      if (!raf) raf = requestAnimationFrame(loop);
+    });
+    $("#workList").addEventListener("mouseover", (e) => {
+      const row = e.target.closest(".work-row");
+      if (!row) return;
+      const p = PROJECTS[+row.dataset.i];
+      if (!p.images || !p.images.length) { preview.classList.remove("is-visible"); return; }
+      img.src = projectImg(p, p.images[0]);
+      preview.classList.add("is-visible");
+    });
+    $("#workList").addEventListener("mouseleave", () => preview.classList.remove("is-visible"));
+  }
+
+  const projectLinks = (l = {}) => {
+    const out = [];
+    if (l.demo) out.push({ label: "Kunjungi Situs ↗", href: l.demo });
+    if (l.figma) out.push({ label: "Buka Figma ↗", href: l.figma });
+    if (l.download) out.push({ label: "Download ↓", href: l.download });
+    if (l.github) out.push({ label: "Source Code ↗", href: l.github });
     return out;
   };
 
-  /* ---------- Render: profil & hero ---------- */
-  function renderProfile() {
-    $$("[data-bind]").forEach((el) => { el.textContent = PROFILE[el.dataset.bind] || ""; });
+  /* ---------- Certificates ---------- */
+  function renderCertificates() {
+    if (!CERTIFICATES.length) {
+      $("#certificates").remove();
+      $$('[data-needs="certificates"]').forEach((el) => el.remove());
+      return;
+    }
+    const src = (c) => (c.image ? `certificates/${c.image}` : "");
+    const show = (i) => {
+      const c = CERTIFICATES[i];
+      $$(".cert-row").forEach((r, k) => r.classList.toggle("is-active", k === i));
+      const img = $("#certImg");
+      img.src = src(c); img.alt = c.title; img.hidden = !c.image;
+      $("#certMeta").textContent = [c.issuer, c.year].filter(Boolean).join(" · ");
+      $("#certDesc").textContent = c.description || "";
+      $("#certTags").innerHTML = (c.tags || []).map((t) => `<span class="tag">${esc(t)}</span>`).join("");
+    };
+    $("#certList").innerHTML = CERTIFICATES.map(
+      (c, i) => `
+      <li><button type="button" class="cert-row" data-i="${i}" data-cursor="Open" aria-label="Buka sertifikat ${esc(c.title)}">
+        <span class="cert-row__num">(${pad(i + 1)})</span>
+        <span class="cert-row__title">${esc(c.title)}</span>
+        <span class="cert-row__year">${esc(c.year || "")}</span>
+      </button></li>`
+    ).join("");
+    show(0);
 
-    $("#heroPhoto").src = PROFILE.photo;
-    $("#aboutPhoto").src = PROFILE.photoAlt || PROFILE.photo;
-    if (!PROFILE.available) $("#availableBadge").remove();
-
-    const cv = $("#cvButton");
-    if (PROFILE.cv) { cv.href = PROFILE.cv; $("#contactButton").remove(); }
-    else cv.remove();
-
-    const links = contactLinks();
-    $("#heroSocials").innerHTML = links
-      .map((l) => `<a href="${esc(l.href)}" target="_blank" rel="noopener" aria-label="${esc(l.label)}" title="${esc(l.label)}">${icon(l.key)}</a>`)
-      .join("");
-
-    $("#aboutText").innerHTML = PROFILE.about.map((p) => `<p>${esc(p)}</p>`).join("");
-    $("#facts").innerHTML = PROFILE.facts.map((f) => `<div><dt>${esc(f.label)}</dt><dd>${esc(f.value)}</dd></div>`).join("");
-
-    const skillCount = SKILLS.reduce((n, g) => n + g.items.length, 0);
-    const catCount = new Set(PROJECTS.map((p) => p.category)).size;
-    const stats = [
-      { value: PROJECTS.length, label: "Projek selesai" },
-      { value: CERTIFICATES.length, label: "Sertifikat" },
-      { value: catCount, label: "Bidang karya", exact: true },
-      { value: skillCount, label: "Skill & tools" },
-      { value: EXPERIENCES.length, label: "Pengalaman" },
-    ].filter((s) => s.value > 0).slice(0, 4);
-    $("#stats").innerHTML = stats.map((s) => `<div><dt>${esc(s.label)}</dt><dd>${s.value}${s.exact ? "" : "+"}</dd></div>`).join("");
-    $("#stats").dataset.count = stats.length;
-
-    $("#year").textContent = new Date().getFullYear();
+    const list = $("#certList");
+    if (finePointer) list.addEventListener("mouseover", (e) => { const r = e.target.closest(".cert-row"); if (r) show(+r.dataset.i); });
+    list.addEventListener("click", (e) => {
+      const r = e.target.closest(".cert-row");
+      if (!r) return;
+      const i = +r.dataset.i;
+      const c = CERTIFICATES[i];
+      show(i);
+      openModal(
+        {
+          images: c.image ? [src(c)] : [],
+          meta: [c.issuer, c.year].filter(Boolean).join(" · "),
+          title: c.title,
+          desc: c.description,
+          tags: c.tags,
+          links: c.link ? [{ label: "Verifikasi ↗", href: c.link }] : [],
+        },
+        r
+      );
+    });
   }
 
-  /* ---------- Render: skill ---------- */
-  function renderSkills() {
-    $("#skillsGrid").innerHTML = SKILLS.map(
-      (g) => `
-      <div class="card skill-group reveal">
-        <h3>${esc(g.group)}</h3>
-        <ul class="skill-list">
-          ${g.items.map((s) => `<li class="skill">${s.icon ? `<i class="${esc(s.icon)}" aria-hidden="true"></i>` : '<span class="skill__dot"></span>'}${esc(s.name)}</li>`).join("")}
-        </ul>
+  /* ---------- Stack ---------- */
+  function renderStack() {
+    $("#stackRows").innerHTML = STACK.map(
+      (g, i) => `
+      <div class="stack-row reveal">
+        <p class="stack-row__label">(${pad(i + 1)}) ${esc(g.group)}</p>
+        <p class="stack-row__items">${g.items.map((t) => `<span>${esc(t)}</span>`).join("<em>/</em>")}</p>
       </div>`
     ).join("");
   }
 
-  /* ---------- Render: projek ---------- */
-  function renderProjects() {
-    const used = PROJECT_CATEGORIES.filter((c) => PROJECTS.some((p) => p.category === c));
-    const cats = ["Semua", ...used];
-    const count = (c) => (c === "Semua" ? PROJECTS.length : PROJECTS.filter((p) => p.category === c).length);
-
-    const filters = $("#projectFilters");
-    filters.innerHTML = cats
-      .map((c, i) => `<button type="button" role="tab" class="filter${i === 0 ? " is-active" : ""}" aria-selected="${i === 0}" data-filter="${esc(c)}">${esc(c)}<span class="filter__count">${count(c)}</span></button>`)
-      .join("");
-    if (used.length < 2) filters.hidden = true;
-
-    // Projek unggulan (featured) tampil lebih dulu
-    const ordered = PROJECTS.map((p, i) => ({ p, i })).sort((a, b) => (b.p.featured ? 1 : 0) - (a.p.featured ? 1 : 0) || a.i - b.i);
-
-    $("#projectsGrid").innerHTML = ordered
-      .map(({ p, i }) => {
-        const imgs = p.images || [];
-        return `
-        <button type="button" class="project reveal" data-index="${i}" data-category="${esc(p.category)}" aria-label="Lihat detail ${esc(p.title)}">
-          <div class="project__media">
-            ${imgs.length ? `<img src="${esc(projectImg(p, imgs[0]))}" alt="${esc(p.title)}" loading="lazy" />` : ""}
-            ${imgs.length > 1 ? `<span class="project__count">${icon("images")} ${imgs.length}</span>` : ""}
-          </div>
-          <div class="project__body">
-            <div class="project__meta"><span class="project__cat">${esc(p.category)}</span><span>${esc(p.year || "")}</span></div>
-            <h3 class="project__title">${esc(p.title)} ${icon("arrowUpRight")}</h3>
-            <p class="project__summary">${esc(p.summary)}</p>
-            <div class="tags">${(p.tools || []).map((t) => `<span class="tag">${esc(t)}</span>`).join("")}</div>
-          </div>
-        </button>`;
-      })
-      .join("");
-
-    filters.addEventListener("click", (e) => {
-      const btn = e.target.closest(".filter");
-      if (!btn) return;
-      $$(".filter", filters).forEach((b) => { b.classList.toggle("is-active", b === btn); b.setAttribute("aria-selected", b === btn); });
-      const f = btn.dataset.filter;
-      $$(".project").forEach((card) => card.classList.toggle("is-hidden", f !== "Semua" && card.dataset.category !== f));
-    });
-
-    $("#projectsGrid").addEventListener("click", (e) => {
-      const card = e.target.closest(".project");
-      if (card) openProject(PROJECTS[+card.dataset.index], card);
-    });
+  /* ---------- Statement (kata menyala saat scroll) ---------- */
+  function initStatement() {
+    const el = $("#statementText");
+    el.innerHTML = PROFILE.statement.split(/\s+/).map((w) => `<span class="w">${esc(w)}</span> `).join("");
+    const words = $$(".w", el);
+    let ticking = false;
+    const update = () => {
+      ticking = false;
+      const r = el.getBoundingClientRect();
+      const vh = window.innerHeight;
+      const progress = Math.min(1, Math.max(0, (vh * 0.85 - r.top) / (vh * 0.6 + r.height * 0.4)));
+      const lit = Math.round(progress * words.length);
+      words.forEach((w, i) => w.classList.toggle("is-lit", i < lit));
+    };
+    window.addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+    update();
   }
 
-  /* ---------- Render: sertifikat ---------- */
-  function renderCertificates() {
-    if (!CERTIFICATES.length) {
-      $("#certificates").remove();
-      $$('[data-section="certificates"]').forEach((a) => a.remove());
-      return;
+  /* ---------- CV ---------- */
+  function renderCV() {
+    const actions = [];
+    if (PROFILE.cv) {
+      actions.push(`<a class="bracket" href="${esc(PROFILE.cv)}" target="_blank" rel="noopener">Lihat CV</a>`);
+      actions.push(`<a class="bracket" href="${esc(PROFILE.cv)}" download>Download PDF</a>`);
+      if (PROFILE.cvUpdated) actions.push(`<span class="cv__note">Diperbarui ${esc(PROFILE.cvUpdated)}</span>`);
+    } else {
+      actions.push(`<a class="bracket" href="#contact">Minta CV</a>`);
+      actions.push(`<span class="cv__note">Versi PDF segera tersedia</span>`);
     }
-    $("#certsGrid").innerHTML = CERTIFICATES.map(
-      (c, i) => `
-      <button type="button" class="cert reveal" data-index="${i}" aria-label="Lihat sertifikat ${esc(c.title)}">
-        <div class="cert__media">${c.image ? `<img src="certificates/${esc(c.image)}" alt="${esc(c.title)}" loading="lazy" />` : ""}</div>
-        <div class="cert__body">
-          <h3 class="cert__title">${esc(c.title)}</h3>
-          <p class="cert__meta">${esc([c.issuer, c.date].filter(Boolean).join(" · "))}</p>
-        </div>
-      </button>`
-    ).join("");
+    $("#cvActions").innerHTML = actions.join("");
 
-    $("#certsGrid").addEventListener("click", (e) => {
-      const card = e.target.closest(".cert");
-      if (card) openCert(CERTIFICATES[+card.dataset.index], card);
-    });
-  }
-
-  /* ---------- Render: pengalaman & pendidikan ---------- */
-  function renderJourney() {
-    const block = (title, iconName, items) => `
-      <div class="card timeline-card reveal">
-        <h3>${icon(iconName)} ${esc(title)}</h3>
-        <ol class="timeline">
-          ${items
-            .map(
-              (it) => `
-            <li class="timeline__item">
-              ${it.period ? `<p class="timeline__period">${esc(it.period)}</p>` : ""}
-              <p class="timeline__role">${esc(it.role)}</p>
-              <p class="timeline__place">${esc(it.place)}</p>
-              ${it.description ? `<p class="timeline__desc">${esc(it.description)}</p>` : ""}
-            </li>`
-            )
-            .join("")}
-        </ol>
+    const skills = STACK.flatMap((g) => g.items).slice(0, 10);
+    const contact = socials().slice(0, 3);
+    $("#cvCard").innerHTML = `
+      <div class="cv-card__side">
+        <div class="cv-card__photo"><img src="${esc(PROFILE.photoAlt || PROFILE.photo)}" alt="" loading="lazy" /></div>
+        <div><h4>Kontak</h4><ul>${contact.map((c) => `<li>${esc(c.label)}</li>`).join("")}</ul></div>
+        <div><h4>Skills</h4><ul>${skills.map((s) => `<li>${esc(s)}</li>`).join("")}</ul></div>
+      </div>
+      <div class="cv-card__main">
+        <div><p class="cv-card__name">${esc(PROFILE.name)}</p><p class="cv-card__role">${esc(PROFILE.role)}</p></div>
+        <div><h4>Pendidikan</h4><ul>${EDUCATION.map((e) => `<li>${esc(e.school)}</li>`).join("")}</ul></div>
+        <div><h4>Projek</h4><ul>${PROJECTS.slice(0, 5).map((p) => `<li>${esc(p.title)} — ${esc(p.role || p.category)}</li>`).join("")}</ul></div>
+        <div><h4>Keahlian</h4><ul>${SERVICES.filter((s) => !s.cta).map((s) => `<li>${esc(s.title)}</li>`).join("")}</ul></div>
       </div>`;
-    let html = "";
-    if (EXPERIENCES.length) html += block("Pengalaman", "briefcase", EXPERIENCES);
-    if (EDUCATION.length) html += block("Pendidikan", "school", EDUCATION);
-    $("#journeyGrid").innerHTML = html;
   }
 
-  /* ---------- Render: kontak ---------- */
+  /* ---------- Contact ---------- */
   function renderContact() {
-    $("#contactList").innerHTML = contactLinks()
-      .map(
-        (l) => `
-        <li><a class="contact__item" href="${esc(l.href)}" target="_blank" rel="noopener">
-          <span class="contact__icon">${icon(l.key)}</span>
-          <span><span class="contact__label">${esc(l.label)}</span><span class="contact__value">${esc(l.value)}</span></span>
-          ${icon("arrowUpRight")}
-        </a></li>`
-      )
-      .join("");
+    const direct = socials().slice(0, 3).map((l) => `<a href="${esc(l.href)}" target="_blank" rel="noopener">${esc(l.label)}</a>`);
+    $("#contactDirect").innerHTML = direct.length ? `Atau hubungi langsung: ${direct.join(" · ")}` : "";
 
     const form = $("#contactForm");
     const via = CONTACT.whatsapp ? "whatsapp" : CONTACT.email ? "email" : null;
     if (!via) { form.remove(); return; }
-    $("#cfHint").textContent = via === "whatsapp" ? "Pesan akan dibuka di WhatsApp." : "Pesan akan dibuka di aplikasi email kamu.";
+    $("#formHint").textContent = via === "whatsapp" ? "Terkirim lewat WhatsApp" : "Terkirim lewat email";
 
     form.addEventListener("submit", (e) => {
       e.preventDefault();
       const name = form.name.value.trim();
+      const topic = form.topic.value.trim();
       const msg = form.message.value.trim();
-      const err = $("#cfError");
+      const err = $("#formError");
       if (!name || !msg) { err.hidden = false; (name ? form.message : form.name).focus(); return; }
       err.hidden = true;
-      const text = `Halo ${PROFILE.nickname}, saya ${name}.\n\n${msg}`;
+      const text = `Halo ${PROFILE.wordmark}, saya ${name}.${topic ? `\nKebutuhan: ${topic}` : ""}\n\n${msg}`;
       const url =
         via === "whatsapp"
           ? `https://wa.me/${CONTACT.whatsapp}?text=${encodeURIComponent(text)}`
@@ -243,165 +355,175 @@
   }
 
   /* ---------- Modal ---------- */
-  let lastFocus = null;
-  function openModal(modal, trigger) {
+  const modal = $("#modal");
+  let gallery = [], gIndex = 0, lastFocus = null;
+
+  function showImage(i) {
+    if (!gallery.length) return;
+    gIndex = (i + gallery.length) % gallery.length;
+    $("#mImage").src = gallery[gIndex];
+    $$(".modal__thumb").forEach((t, k) => t.classList.toggle("is-active", k === gIndex));
+  }
+
+  function openModal(d, trigger) {
     lastFocus = trigger || document.activeElement;
+    gallery = d.images || [];
+    const multi = gallery.length > 1;
+    $(".modal__media", modal).hidden = !gallery.length;
+    $("#mPrev").hidden = $("#mNext").hidden = !multi;
+    $("#mThumbs").innerHTML = multi
+      ? gallery.map((src, k) => `<button type="button" class="modal__thumb" data-k="${k}" aria-label="Gambar ${k + 1}"><img src="${esc(src)}" alt="" /></button>`).join("")
+      : "";
+    $("#mImage").alt = d.title;
+    showImage(0);
+    $("#mMeta").textContent = d.meta || "";
+    $("#mTitle").textContent = d.title;
+    $("#mDesc").textContent = d.desc || "";
+    $("#mTags").innerHTML = (d.tags || []).map((t) => `<span class="tag">${esc(t)}</span>`).join("");
+    $("#mLinks").innerHTML = (d.links || []).map((l) => bracketLink(l)).join("");
     modal.hidden = false;
-    document.body.classList.add("modal-open");
+    document.body.classList.add("is-locked");
     $(".modal__close", modal).focus();
   }
-  function closeModal(modal) {
+  function closeModal() {
     modal.hidden = true;
-    document.body.classList.remove("modal-open");
+    document.body.classList.remove("is-locked");
     if (lastFocus) lastFocus.focus();
   }
-  $$(".modal").forEach((m) => m.addEventListener("click", (e) => { if (e.target.closest("[data-close]")) closeModal(m); }));
-
-  const linkBtn = (href, label, iconName, primary) =>
-    `<a class="btn ${primary ? "btn--primary" : "btn--ghost"} btn--sm" href="${esc(href)}" target="_blank" rel="noopener">${icon(iconName)} ${esc(label)}</a>`;
-
-  let current = { project: null, index: 0 };
-  function showImage(i) {
-    const p = current.project;
-    const imgs = p.images || [];
-    if (!imgs.length) return;
-    current.index = (i + imgs.length) % imgs.length;
-    const img = $("#modalImage");
-    img.src = projectImg(p, imgs[current.index]);
-    img.alt = `${p.title} — gambar ${current.index + 1}`;
-    $$(".modal__thumb").forEach((t, k) => t.classList.toggle("is-active", k === current.index));
-  }
-
-  function openProject(p, trigger) {
-    current = { project: p, index: 0 };
-    const imgs = p.images || [];
-    const multi = imgs.length > 1;
-    $("#modalPrev").hidden = !multi;
-    $("#modalNext").hidden = !multi;
-    $("#modalThumbs").innerHTML = multi
-      ? imgs.map((f, k) => `<button type="button" class="modal__thumb" data-k="${k}" aria-label="Gambar ${k + 1}"><img src="${esc(projectImg(p, f))}" alt="" /></button>`).join("")
-      : "";
-    $(".modal__gallery").hidden = !imgs.length;
-    showImage(0);
-
-    $("#modalMeta").textContent = [p.category, p.year].filter(Boolean).join(" · ");
-    $("#modalTitle").textContent = p.title;
-    $("#modalDesc").textContent = p.description || p.summary;
-    $("#modalTools").innerHTML = (p.tools || []).map((t) => `<span class="tag">${esc(t)}</span>`).join("");
-
-    const l = p.links || {};
-    const links = [];
-    if (l.demo) links.push(linkBtn(l.demo, "Lihat Demo", "external", true));
-    if (l.download) links.push(linkBtn(l.download, "Download", "download", !l.demo));
-    if (l.figma) links.push(linkBtn(l.figma, "Buka di Figma", "external", !l.demo && !l.download));
-    if (l.github) links.push(linkBtn(l.github, "Source Code", "github", false));
-    $("#modalLinks").innerHTML = links.join("");
-
-    openModal($("#projectModal"), trigger);
-  }
-  $("#modalPrev").addEventListener("click", () => showImage(current.index - 1));
-  $("#modalNext").addEventListener("click", () => showImage(current.index + 1));
-  $("#modalThumbs").addEventListener("click", (e) => {
-    const t = e.target.closest(".modal__thumb");
-    if (t) showImage(+t.dataset.k);
-  });
-
-  function openCert(c, trigger) {
-    const img = $("#certImage");
-    img.hidden = !c.image;
-    if (c.image) { img.src = `certificates/${c.image}`; img.alt = c.title; }
-    $("#certTitle").textContent = c.title;
-    $("#certMeta").textContent = [c.issuer, c.date].filter(Boolean).join(" · ");
-    $("#certLinks").innerHTML = c.link ? linkBtn(c.link, "Verifikasi Sertifikat", "external", true) : "";
-    openModal($("#certModal"), trigger);
-  }
-
+  modal.addEventListener("click", (e) => { if (e.target.closest("[data-close]")) closeModal(); });
+  $("#mPrev").addEventListener("click", () => showImage(gIndex - 1));
+  $("#mNext").addEventListener("click", () => showImage(gIndex + 1));
+  $("#mThumbs").addEventListener("click", (e) => { const t = e.target.closest(".modal__thumb"); if (t) showImage(+t.dataset.k); });
   document.addEventListener("keydown", (e) => {
-    const open = $$(".modal").find((m) => !m.hidden);
-    if (!open) return;
-    if (e.key === "Escape") closeModal(open);
-    if (open.id === "projectModal" && current.project && (current.project.images || []).length > 1) {
-      if (e.key === "ArrowLeft") showImage(current.index - 1);
-      if (e.key === "ArrowRight") showImage(current.index + 1);
-    }
+    if (modal.hidden) return;
+    if (e.key === "Escape") closeModal();
+    if (e.key === "ArrowLeft" && gallery.length > 1) showImage(gIndex - 1);
+    if (e.key === "ArrowRight" && gallery.length > 1) showImage(gIndex + 1);
     if (e.key === "Tab") {
-      // Jaga fokus tetap di dalam modal
-      const f = $$("button:not([hidden]), a[href]", open).filter((el) => el.offsetParent !== null);
-      if (!f.length) return;
+      const f = $$("button, a[href]", modal).filter((el) => el.offsetParent !== null);
       const first = f[0], last = f[f.length - 1];
       if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
       else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
     }
   });
 
-  /* ---------- Navbar, tema, reveal ---------- */
+  /* ---------- Navbar & menu ---------- */
   function initNav() {
     const nav = $("#nav");
-    const links = $("#navLinks");
-    const burger = $("#navBurger");
-    const onScroll = () => nav.classList.toggle("is-scrolled", window.scrollY > 10);
+    const onScroll = () => nav.classList.toggle("is-scrolled", window.scrollY > 20);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
 
-    const setOpen = (open) => {
-      links.classList.toggle("is-open", open);
-      burger.setAttribute("aria-expanded", open);
-      burger.innerHTML = icon(open ? "x" : "menu");
+    const menu = $("#menu");
+    const btn = $("#menuBtn");
+    const setMenu = (open) => {
+      menu.hidden = !open;
+      btn.setAttribute("aria-expanded", open);
+      btn.textContent = open ? "Close" : "Menu";
+      document.body.classList.toggle("is-locked", open);
     };
-    burger.addEventListener("click", () => setOpen(!links.classList.contains("is-open")));
-    links.addEventListener("click", (e) => { if (e.target.closest("a")) setOpen(false); });
-    document.addEventListener("click", (e) => { if (!nav.contains(e.target)) setOpen(false); });
+    btn.addEventListener("click", () => setMenu(menu.hidden));
+    menu.addEventListener("click", (e) => { if (e.target.closest("a")) setMenu(false); });
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !menu.hidden) setMenu(false); });
 
-    // Tandai menu aktif sesuai section yang terlihat
-    const navAnchors = $$("a[href^='#']", links);
-    const sections = navAnchors.map((a) => $(a.getAttribute("href"))).filter(Boolean);
+    // Tandai menu aktif
+    const links = $$(".nav__left a");
+    const targets = links.map((a) => $(a.getAttribute("href"))).filter(Boolean);
     if ("IntersectionObserver" in window) {
       const io = new IntersectionObserver(
         (entries) => entries.forEach((en) => {
-          if (!en.isIntersecting) return;
-          navAnchors.forEach((a) => a.classList.toggle("is-active", a.getAttribute("href") === "#" + en.target.id));
+          if (en.isIntersecting) links.forEach((a) => a.classList.toggle("is-active", a.getAttribute("href") === "#" + en.target.id));
         }),
         { rootMargin: "-45% 0px -50% 0px" }
       );
-      sections.forEach((s) => io.observe(s));
+      targets.forEach((t) => io.observe(t));
     }
   }
 
-  function initTheme() {
-    $("#themeToggle").addEventListener("click", () => {
-      const next = document.documentElement.getAttribute("data-theme") === "light" ? "dark" : "light";
-      document.documentElement.setAttribute("data-theme", next);
-      store.set("theme", next);
+  /* ---------- Efek huruf acak pada nama ---------- */
+  function initScramble() {
+    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ#%&∑Ø";
+    $$(".scramble").forEach((el) => {
+      const original = el.textContent;
+      let timer = null;
+      el.addEventListener("mouseenter", () => {
+        if (reduceMotion) return;
+        let frame = 0;
+        clearInterval(timer);
+        timer = setInterval(() => {
+          el.textContent = original
+            .split("")
+            .map((ch, i) => (i < frame / 2 ? ch : chars[Math.floor(Math.random() * chars.length)]))
+            .join("");
+          if (++frame > original.length * 2) { clearInterval(timer); el.textContent = original; }
+        }, 35);
+      });
     });
   }
 
+  /* ---------- Kursor ---------- */
+  function initCursor() {
+    if (!finePointer) return;
+    const cur = $(".cursor");
+    const label = $(".cursor__label");
+    let x = -100, y = -100, cx = -100, cy = -100;
+    document.addEventListener("mousemove", (e) => { x = e.clientX; y = e.clientY; cur.classList.add("is-visible"); });
+    document.addEventListener("mouseleave", () => cur.classList.remove("is-visible"));
+    document.addEventListener("mouseover", (e) => {
+      const t = e.target.closest("[data-cursor]");
+      cur.classList.toggle("is-label", !!t);
+      if (t) label.textContent = t.dataset.cursor;
+    });
+    const loop = () => {
+      cx += (x - cx) * 0.22; cy += (y - cy) * 0.22;
+      cur.style.transform = `translate3d(${cx}px, ${cy}px, 0)`;
+      requestAnimationFrame(loop);
+    };
+    loop();
+  }
+
+  /* ---------- Nama raksasa di footer selalu pas selebar layar ---------- */
+  function initFitWordmark() {
+    const el = $(".footer__word");
+    el.innerHTML = `<span>${esc(el.textContent)}</span>`;
+    const span = $("span", el);
+    const fit = () => {
+      el.style.fontSize = "100px";
+      const w = span.getBoundingClientRect().width;
+      if (w) el.style.fontSize = (100 * el.clientWidth) / w * 0.985 + "px";
+    };
+    fit();
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+    let t;
+    window.addEventListener("resize", () => { clearTimeout(t); t = setTimeout(fit, 120); });
+  }
+
+  /* ---------- Muncul saat scroll ---------- */
   function initReveal() {
     const els = $$(".reveal");
     if (!("IntersectionObserver" in window)) { els.forEach((el) => el.classList.add("is-visible")); return; }
     const io = new IntersectionObserver(
-      (entries) => entries.forEach((en) => {
-        if (en.isIntersecting) { en.target.classList.add("is-visible"); io.unobserve(en.target); }
-      }),
+      (entries) => entries.forEach((en) => { if (en.isIntersecting) { en.target.classList.add("is-visible"); io.unobserve(en.target); } }),
       { rootMargin: "0px 0px -8% 0px", threshold: 0.05 }
     );
-    els.forEach((el, i) => {
-      // Efek muncul bertahap untuk elemen dalam satu grid
-      const siblings = el.parentElement ? Array.from(el.parentElement.children).filter((c) => c.classList.contains("reveal")) : [];
-      const pos = siblings.indexOf(el);
-      if (pos > 0) el.style.transitionDelay = Math.min(pos * 70, 350) + "ms";
-      io.observe(el);
-    });
+    els.forEach((el) => io.observe(el));
   }
 
   /* ---------- Jalankan ---------- */
   renderProfile();
-  renderSkills();
-  renderProjects();
+  renderHero();
+  renderMarquees();
+  renderServices();
+  renderEducation();
+  renderWork();
   renderCertificates();
-  renderJourney();
+  renderStack();
+  renderCV();
   renderContact();
-  $$("[data-icon]").forEach((el) => { el.innerHTML = icon(el.dataset.icon); });
+  initStatement();
   initNav();
-  initTheme();
+  initScramble();
+  initCursor();
+  initFitWordmark();
   initReveal();
 })();
