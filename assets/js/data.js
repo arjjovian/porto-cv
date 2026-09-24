@@ -14,57 +14,65 @@
 const PROFILE = {
   name: "Ahnaf Ralip Jovian",
   nickname: "Jovian",
-  role: "Frontend Developer & UI/UX Designer",
+  role: "UI/UX Designer & Frontend Developer",
   school: "SMK Telkom Purwokerto · RPL",
   location: "Purwokerto, ID",
   timezone: "Asia/Jakarta", // untuk jam live di hero
   available: true, // badge "Available for work"
   photo: "assets/img/profile.jpg", // foto hero
-  photoAlt: "assets/img/profile-alt.jpg", // foto About & CV
+  photoAlt: "assets/img/profile-alt.jpg", // foto About
   heroLines: ["Design.", "Code.", "Play."], // baris ke-2 tampil bergaris tepi
   heroIntro:
-    "Hai, saya Jovian — pelajar Rekayasa Perangkat Lunak yang merancang tampilan, membangun website & aplikasi, dan membuat game yang seru dimainkan.",
+    "Hai, saya Jovian — siswa Rekayasa Perangkat Lunak yang merancang tampilan web & aplikasi, lalu mewujudkannya jadi produk yang nyaman dipakai.",
   aboutLead:
     "Saya suka mengubah ide menjadi sesuatu yang bisa dilihat, disentuh, dan dimainkan.",
   about: [
-    "Nama saya Ahnaf Ralip Jovian, lahir di Gunungkidul pada 27 Juli 2009. Sekarang saya belajar Rekayasa Perangkat Lunak di SMK Telkom Purwokerto.",
-    "Setiap projek saya mulai dari sketsa di Figma, lalu saya wujudkan jadi website, aplikasi, ilustrasi, atau game. Di luar ngoding, saya suka berenang dan bermain game — dua hal yang bikin saya tetap produktif dan terinspirasi.",
+    "Nama saya Ahnaf Ralip Jovian, siswa kelas XI jurusan Rekayasa Perangkat Lunak di SMK Telkom Purwokerto. Minat utama saya ada di UI/UX Design dan desain grafis.",
+    "Saya terbiasa mengerjakan projek sekolah yang menuntut kreativitas, ketelitian, dan kerja sama tim — mulai dari desain di Figma, ilustrasi vektor, sampai website dan aplikasi Android. Di luar itu, saya suka berenang dan bermain game.",
   ],
   facts: [
     { label: "Sekolah", value: "SMK Telkom Purwokerto" },
     { label: "Jurusan", value: "Rekayasa Perangkat Lunak" },
-    { label: "Asal", value: "Banyumas, Jawa Tengah" },
-    { label: "Hobi", value: "Renang & Game" },
+    { label: "Asal", value: "Ajibarang, Banyumas" },
+    { label: "Fokus", value: "UI/UX & Desain Grafis" },
   ],
-  cv: "", // contoh: "assets/cv-ahnaf-ralip-jovian.pdf" — kosongkan jika belum ada
-  cvUpdated: "", // contoh: "September 2026"
+  cv: "assets/cv-ahnaf-ralip-jovian.pdf", // kosongkan ("") jika belum ada
+  cvPreview: "assets/img/cv-preview.jpg", // gambar halaman CV untuk pratinjau
+  cvUpdated: "2026",
 };
 
 /* Kontak & sosial media — kosongkan ("") yang tidak dipakai */
 const CONTACT = {
-  email: "",
-  whatsapp: "6288238231258", // format internasional tanpa + dan tanpa 0 di depan
+  email: "arjjovian@gmail.com",
+  whatsapp: "62882006534564", // format internasional tanpa + dan tanpa 0 di depan
+  whatsappLabel: "+62 882-0065-34564", // cara nomor ditampilkan
   instagram: "arj_jov",
   github: "arjjovian",
-  linkedin: "", // contoh: "ahnaf-ralip-jovian"
+  linkedin: "ahnaf-ralip-jovian-16b87a346",
 };
 
 /* Teks pada marquee */
-const MARQUEE = ["Frontend Developer", "UI/UX Designer", "Game Developer", "Graphic Designer", "Mobile Apps"];
+const MARQUEE = ["UI/UX Designer", "Frontend Developer", "Mobile App Designer", "Graphic Designer", "Digital Marketing"];
 
 /* What I Do. Item dengan cta: true tampil sebagai kartu "Jasa" lebar */
 const SERVICES = [
   {
     title: "UI/UX Design",
-    lead: "Merancang tampilan aplikasi dan website yang jelas, nyaman, dan enak dilihat di Figma.",
-    points: ["Wireframe", "User flow", "High-fidelity UI", "Prototype"],
-    image: "projects/arjov-shop/cover.jpg",
+    lead: "Merancang tampilan web dan aplikasi yang jelas, nyaman, dan enak dilihat di Figma.",
+    points: ["Wireframe", "Prototype", "Usability testing", "Design system"],
+    image: "projects/jokop/cover.jpg",
   },
   {
-    title: "Web Development",
-    lead: "Mengubah desain menjadi website responsif yang benar-benar bisa dipakai.",
-    points: ["HTML & CSS", "JavaScript", "PHP & MySQL", "Responsive"],
-    image: "projects/usaha-kita/cover.jpg",
+    title: "Web Design & Development",
+    lead: "Dari desain web responsif sampai jadi website yang benar-benar bisa dipakai.",
+    points: ["Responsive UI", "HTML & CSS", "JavaScript", "PHP & MySQL"],
+    image: "projects/baru-raya-toys/cover.jpg",
+  },
+  {
+    title: "Mobile Apps",
+    lead: "Merancang dan membangun aplikasi Android dengan alur yang mudah dipahami pengguna.",
+    points: ["Android Studio", "Kotlin", "UI mobile", "Figma"],
+    image: "projects/qursiku/cover.jpg",
   },
   {
     title: "Game Development",
@@ -73,21 +81,15 @@ const SERVICES = [
     image: "projects/explorer-journey/cover.jpg",
   },
   {
-    title: "Mobile Apps",
-    lead: "Membuat aplikasi Android sederhana dengan alur yang mudah dipahami pengguna.",
-    points: ["Android (APK)", "UI mobile", "Navigasi", "Data"],
-    image: "",
-  },
-  {
-    title: "Graphic Design",
-    lead: "Ilustrasi vektor, desain CV, poster, sampai konten media sosial dan video.",
-    points: ["Vektor", "Desain CV", "Poster", "Editing video"],
+    title: "Graphic Design & Content",
+    lead: "Ilustrasi vektor, poster, ID card, sampai konten media sosial dan digital marketing.",
+    points: ["Vektor", "Poster & ID card", "Konten sosmed", "Copywriting"],
     image: "projects/om-nom-stories/cover.jpg",
   },
   {
-    title: "Jasa Pembuatan Website",
-    lead: "Butuh website untuk usaha, organisasi, atau pribadi? Saya bantu dari desain sampai website kamu online dan siap dibagikan.",
-    points: ["Landing page", "Company profile", "Website portofolio", "Figma → Website", "Bantu online-kan", "Revisi"],
+    title: "Jasa Desain & Pembuatan Website",
+    lead: "Butuh website atau desain aplikasi untuk usaha, organisasi, atau pribadi? Saya bantu dari desain di Figma sampai website kamu online dan siap dibagikan.",
+    points: ["Desain UI di Figma", "Landing page", "Company profile", "Toko online", "Website portofolio", "Revisi"],
     cta: true,
   },
 ];
@@ -97,16 +99,16 @@ const EDUCATION = [
   {
     school: "SMK Telkom Purwokerto",
     level: "SMK · Rekayasa Perangkat Lunak",
-    period: "Sekarang",
-    description: "Mendalami pengembangan web, basis data, desain UI/UX, dan pemrograman game.",
+    period: "2024 — Sekarang",
+    description: "Fokus di UI/UX Design, desain grafis, dan dasar pemrograman. Terbiasa memakai Figma, Canva, Adobe Illustrator, dan VS Code.",
     map: "https://www.google.com/maps/search/?api=1&query=SMK+Telkom+Purwokerto",
     current: true,
   },
   {
     school: "SMP Negeri 1 Ajibarang",
     level: "Sekolah Menengah Pertama",
-    period: "",
-    description: "Tempat saya pertama kali penasaran dengan teknologi dan dunia digital.",
+    period: "2021 — 2024",
+    description: "Mengembangkan kreativitas dan kerja sama tim lewat berbagai kegiatan pembelajaran.",
     map: "https://www.google.com/maps/search/?api=1&query=SMP+Negeri+1+Ajibarang",
   },
   {
@@ -126,12 +128,69 @@ const EDUCATION = [
 const PROJECT_CATEGORIES = {
   Web: "Web",
   Mobile: "Mobile",
-  Game: "Game",
   "UI/UX": "UI/UX",
+  Game: "Game",
   Design: "Design",
 };
 
 const PROJECTS = [
+  {
+    slug: "baru-raya-toys",
+    title: "Baru Raya Toys",
+    category: "Web",
+    role: "Web Design · Figma",
+    year: "2024",
+    summary: "Toko mainan online lengkap dengan blog parenting dan admin dashboard.",
+    description:
+      "Desain website toko mainan online. Pembeli bisa mencari dan memfilter mainan, menyimpan ke wishlist, memasukkan ke keranjang, lalu memesan untuk diantar ke alamat. Ada juga blog parenting dan newsletter. Di sisi admin, pemilik toko bisa mengelola produk, pesanan, stok, supplier, promo & voucher, pelanggan, staff & role, sampai laporan.",
+    tools: ["Figma", "UI/UX", "Web Design"],
+    images: ["cover.jpg", "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg"],
+    links: { figma: "https://www.figma.com/design/fk15PifsUaHqNu8QUm5V2R/Baru-Raya-toys" },
+    featured: true,
+  },
+  {
+    slug: "mesinpro",
+    title: "MESINPRO",
+    category: "Web",
+    role: "Web Design · Figma",
+    year: "2024",
+    summary: "Toko alat berat & mesin industri dengan fitur bandingkan produk.",
+    description:
+      "Desain website toko alat berat dan mesin industri. Isinya katalog per kategori, detail produk lengkap dengan spesifikasi, fitur bandingkan produk, keranjang, dan checkout tiga langkah — mulai dari pilihan kargo atau armada alat berat, transfer bank, virtual account, sampai cicilan dan leasing.",
+    tools: ["Figma", "UI/UX", "E-commerce"],
+    images: ["cover.jpg", "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg"],
+    links: { figma: "https://www.figma.com/design/zIfR5hjhx405wCwfKF3Uy0/PSAJ-Mesin" },
+    featured: true,
+  },
+  {
+    slug: "qursiku",
+    title: "Qursiku",
+    category: "Mobile",
+    role: "UI/UX & Android App",
+    year: "2025",
+    summary: "Aplikasi Android untuk pesan tiket bioskop online.",
+    description:
+      "Aplikasi pemesanan tiket bioskop digital. Pengguna bisa mendaftar, melihat film yang tayang dan yang akan datang, memilih jadwal dan kursi, memakai kode promo, lalu melihat ringkasan pesanan sebelum membayar. Tampilan dirancang di Figma, lalu dibangun dengan Android Studio dan Kotlin.",
+    tools: ["Figma", "Android Studio", "Kotlin"],
+    images: ["cover.jpg", "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg"],
+    links: {
+      figma: "https://www.figma.com/design/BMbl86uYILTv3GWb6WOW1F/Untitled",
+      github: "https://github.com/arjjovian/APK-Qursiku",
+    },
+  },
+  {
+    slug: "jokop",
+    title: "Jokop — Jovian Kopi",
+    category: "UI/UX",
+    role: "Mobile App Design",
+    year: "2025",
+    summary: "Desain aplikasi pemesanan kopi untuk pick-up & delivery.",
+    description:
+      "Projek UI/UX aplikasi pemesanan kopi digital. Pengguna bisa memilih outlet, melihat menu populer dan kategori, mengatur ukuran, susu, dan tingkat manis, lalu menyelesaikan pesanan dan pembayaran. Fokusnya pada tampilan yang hangat, navigasi mudah, dan pengalaman yang nyaman.",
+    tools: ["Figma", "UI/UX", "Mobile"],
+    images: ["cover.jpg", "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg"],
+    links: { figma: "https://www.figma.com/design/74nQDQT2hruFGs9Wh3lC7m/DESIGN-JOKOP" },
+  },
   {
     slug: "usaha-kita",
     title: "Usaha Kita",
@@ -144,7 +203,6 @@ const PROJECTS = [
     tools: ["HTML", "CSS", "JavaScript"],
     images: ["cover.jpg", "1.jpg", "2.jpg"],
     links: { github: "https://github.com/arjjovian/mk3-usahakita" },
-    featured: true,
   },
   {
     slug: "explorer-journey",
@@ -163,7 +221,7 @@ const PROJECTS = [
     slug: "arjov-shop",
     title: "Arjov Shop",
     category: "UI/UX",
-    role: "UI/UX Design",
+    role: "Landing Page Design",
     year: "",
     summary: "Desain landing page toko sepatu online di Figma.",
     description:
@@ -211,21 +269,66 @@ const PROJECTS = [
   },
 ];
 
-/* Sertifikat. Section otomatis muncul kalau array ini ada isinya. Contoh:
+/* Sertifikat. images = file di folder certificates/ (gambar pertama jadi cover). */
+const CERTIFICATES = [
+  {
+    title: "AI Class ASEAN: AI for Youth",
+    issuer: "ASEAN Foundation × Google.org",
+    year: "2026",
+    description: "Menyelesaikan 15 modul pembelajaran AI (12 jam) dari AI Ready ASEAN — mulai dari pengenalan AI, etika & keamanan data, prompt, sampai membuat aplikasi sederhana berbasis AI.",
+    tags: ["Artificial Intelligence", "AI Ethics"],
+    images: ["ai-class-asean-1.jpg", "ai-class-asean-2.jpg"],
+    link: "",
+  },
   {
     title: "Belajar Dasar Pemrograman Web",
     issuer: "Dicoding Indonesia",
     year: "2026",
-    description: "Kelas dasar HTML & CSS ...",
-    tags: ["HTML", "CSS"],
-    image: "belajar-dasar-web.jpg",                      // file di folder certificates/
-    link: "https://www.dicoding.com/certificates/XXXX", // boleh ""
+    description: "Sertifikat kompetensi kelas dasar HTML & CSS (41 jam): struktur dan semantik HTML, styling, layout dengan Flexbox, dan halaman responsif. Ditutup dengan ujian akhir dan submission proyek website.",
+    tags: ["HTML", "CSS", "Responsive"],
+    images: ["dicoding-web-1.jpg", "dicoding-web-2.jpg", "dicoding-web-3.jpg"],
+    link: "https://www.dicoding.com/certificates/2VX3V1O4JPYQ",
   },
-*/
-const CERTIFICATES = [];
+  {
+    title: "AI Ignition Training",
+    issuer: "KUMPUL × AI Ignition Indonesia",
+    year: "2026",
+    description: "Pelatihan AI 30 JP dari AI Opportunity Fund: Asia Pacific (AVPN, Google.org, ADB) — kecerdasan artifisial, AI generatif, prompt engineering, LLM, dan penggunaan AI yang bertanggung jawab.",
+    tags: ["Generative AI", "Prompt Engineering"],
+    images: ["ai-ignition-1.jpg", "ai-ignition-2.jpg"],
+    link: "",
+  },
+  {
+    title: "Digital Marketing — Telkom DigiUp",
+    issuer: "Telkom Indonesia · PT TPCC",
+    year: "2025",
+    description: "Program sertifikasi Digital Marketing Telkom DigiUp 2025 (26 JP) dengan grade Certified — strategi pemasaran digital, konten sosial media, copywriting, dan proyek promosi untuk Jokop.",
+    tags: ["Digital Marketing", "Canva", "Copywriting"],
+    images: ["digital-marketing-1.jpg", "digital-marketing-2.jpg"],
+    link: "",
+  },
+  {
+    title: "Azure AI Fundamentals (AI-900) Prep Course",
+    issuer: "Microsoft × elevAIte Indonesia",
+    year: "2025",
+    description: "Kursus persiapan sertifikasi Microsoft Azure AI Fundamentals (AI-900) — konsep dasar AI dan layanan AI di cloud Microsoft Azure.",
+    tags: ["Microsoft Azure", "Cloud AI"],
+    images: ["azure-ai-900-1.jpg"],
+    link: "",
+  },
+];
 
 /* Tech & Stack. icon = class Devicon (https://devicon.dev), boleh kosong */
 const STACK = [
+  {
+    group: "Design",
+    items: [
+      { name: "Figma", icon: "devicon-figma-plain" },
+      { name: "Illustrator", icon: "devicon-illustrator-plain" },
+      { name: "Canva", icon: "devicon-canva-original" },
+      { name: "CapCut", icon: "" },
+    ],
+  },
   {
     group: "Languages",
     items: [
@@ -233,19 +336,12 @@ const STACK = [
       { name: "CSS", icon: "devicon-css3-plain" },
       { name: "JavaScript", icon: "devicon-javascript-plain" },
       { name: "PHP", icon: "devicon-php-plain" },
+      { name: "Kotlin", icon: "devicon-kotlin-plain" },
       { name: "C#", icon: "devicon-csharp-plain" },
     ],
   },
-  { group: "Data & Backend", items: [{ name: "MySQL", icon: "devicon-mysql-plain" }] },
-  { group: "Game", items: [{ name: "Unity", icon: "devicon-unity-plain" }] },
-  {
-    group: "Design & Media",
-    items: [
-      { name: "Figma", icon: "devicon-figma-plain" },
-      { name: "Illustrator", icon: "devicon-illustrator-plain" },
-      { name: "Video Editing", icon: "" },
-    ],
-  },
+  { group: "Mobile & Game", items: [{ name: "Android Studio", icon: "devicon-androidstudio-plain" }, { name: "Unity", icon: "devicon-unity-plain" }] },
+  { group: "Data", items: [{ name: "MySQL", icon: "devicon-mysql-plain" }] },
   {
     group: "Tools",
     items: [

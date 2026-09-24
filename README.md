@@ -1,6 +1,6 @@
 # Portofolio — Ahnaf Ralip Jovian
 
-Website portofolio pribadi bertema gelap dengan aksen lime: hero, about, services (keahlian & jasa),
+Website portofolio pribadi bertema gelap yang kalem (tanpa warna mencolok): hero, about, services (keahlian & jasa),
 education, selected work, certificates, stats, tech stack, CV, dan kontak.
 Dibuat dengan HTML, CSS, dan JavaScript murni. Tidak perlu database atau build tool.
 
@@ -52,6 +52,7 @@ certificates/         gambar sertifikat
 ## Menambah sertifikat
 
 Masukkan gambarnya ke `certificates/`, lalu tambahkan datanya di array `CERTIFICATES`.
+Gambar pertama di `images` jadi cover kartu. Gambar berikutnya (misalnya halaman modul) tampil di galeri saat kartu diklik.
 Section **Sertifikat** otomatis muncul begitu array ini ada isinya.
 
 ```js
@@ -61,15 +62,16 @@ Section **Sertifikat** otomatis muncul begitu array ini ada isinya.
   year: "2026",
   description: "Penjelasan singkat sertifikat.",
   tags: ["HTML", "CSS"],
-  image: "nama-file.jpg",
-  link: "",
+  images: ["nama-file-1.jpg", "nama-file-2.jpg"],
+  link: "",                       // link verifikasi, boleh kosong
 },
 ```
 
 ## Menambah CV
 
-Taruh file PDF di `assets/`, misalnya `assets/cv-ahnaf-ralip-jovian.pdf`. Setelah itu isi `PROFILE.cv` dan `PROFILE.cvUpdated` di `data.js`.
-Tombol **Lihat CV** dan **Download PDF** akan muncul otomatis.
+CV ada di `assets/cv-ahnaf-ralip-jovian.pdf`, dan gambar pratinjaunya di `assets/img/cv-preview.jpg`.
+Kalau CV diperbarui, ganti kedua file itu (nama file tetap sama), lalu sesuaikan `PROFILE.cvUpdated` di `data.js`.
+Versi di web sengaja tidak mencantumkan alamat rumah lengkap.
 
 ## Bagian lain di data.js
 
@@ -77,7 +79,7 @@ Tombol **Lihat CV** dan **Download PDF** akan muncul otomatis.
 - `STACK`: kelompok tools di section Tech stack. `icon` memakai class dari [devicon.dev](https://devicon.dev).
 - `MARQUEE`: teks berjalan di bawah hero.
 - `PROFILE.heroLines`: tiga baris judul besar di hero.
-- Warna aksen bisa diganti lewat `--accent` di bagian atas `assets/css/style.css`.
+- Warna tombol utama (`--accent`) dan aksen dekoratif abu-abu (`--soft`) ada di bagian atas `assets/css/style.css`.
 
 ## Tips gambar
 

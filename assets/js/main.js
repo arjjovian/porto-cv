@@ -20,7 +20,7 @@
   const socials = () => {
     const c = CONTACT;
     const out = [];
-    if (c.whatsapp) out.push({ label: "WhatsApp", value: "+" + c.whatsapp, href: `https://wa.me/${c.whatsapp}` });
+    if (c.whatsapp) out.push({ label: "WhatsApp", value: c.whatsappLabel || "+" + c.whatsapp, href: `https://wa.me/${c.whatsapp}` });
     if (c.instagram) out.push({ label: "Instagram", value: "@" + c.instagram, href: `https://instagram.com/${c.instagram}` });
     if (c.github) out.push({ label: "GitHub", value: c.github, href: `https://github.com/${c.github}` });
     if (c.linkedin) out.push({ label: "LinkedIn", value: c.linkedin, href: `https://www.linkedin.com/in/${c.linkedin}` });
@@ -187,6 +187,8 @@
   }
 
   /* ---------- Certificates ---------- */
+  const certImages = (c) => (c.images || (c.image ? [c.image] : [])).map((f) => `certificates/${f}`);
+
   function renderCertificates() {
     if (!CERTIFICATES.length) {
       $("#certificates").remove();
@@ -197,7 +199,7 @@
     carousel.innerHTML = CERTIFICATES.map(
       (c, i) => `
       <button type="button" class="cert" data-cert="${i}" aria-label="Lihat sertifikat ${esc(c.title)}">
-        <div class="cert__img">${c.image ? `<img src="certificates/${esc(c.image)}" alt="${esc(c.title)}" loading="lazy" />` : ""}</div>
+        <div class="cert__img">${certImages(c).length ? `<img src="${esc(certImages(c)[0])}" alt="${esc(c.title)}" loading="lazy" />` : ""}</div>
         <div class="cert__body">
           <h3 class="cert__title">${esc(c.title)}</h3>
           <p class="cert__meta">${esc([c.issuer, c.year].filter(Boolean).join(" · "))}</p>
@@ -216,7 +218,7 @@
         {
           meta: [c.issuer, c.year].filter(Boolean).join(" · "),
           title: c.title,
-          images: c.image ? [`certificates/${c.image}`] : [],
+          images: certImages(c),
           desc: c.description,
           tags: c.tags,
           links: c.link ? [{ label: "Verifikasi sertifikat", href: c.link, primary: true }] : [],
@@ -284,8 +286,14 @@
     }
     $("#cvActions").innerHTML = actions.join("");
 
+    const paper = $("#paper");
+    if (PROFILE.cvPreview) {
+      paper.classList.add("paper--image");
+      paper.innerHTML = `<img src="${esc(PROFILE.cvPreview)}" alt="Pratinjau CV ${esc(PROFILE.name)}" loading="lazy" />`;
+      return;
+    }
     const tools = STACK.flatMap((g) => g.items.map((t) => t.name));
-    $("#paper").innerHTML = `
+    paper.innerHTML = `
       <div class="paper__bar"></div>
       <div class="paper__head">
         <img src="${esc(PROFILE.photoAlt || PROFILE.photo)}" alt="" loading="lazy" />
