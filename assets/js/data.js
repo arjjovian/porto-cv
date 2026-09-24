@@ -13,24 +13,31 @@
 
 const PROFILE = {
   name: "Ahnaf Ralip Jovian",
-  wordmark: "Jovian", // nama besar di navbar & footer
+  nickname: "Jovian",
   role: "Frontend Developer & UI/UX Designer",
+  school: "SMK Telkom Purwokerto · RPL",
+  location: "Purwokerto, ID",
+  timezone: "Asia/Jakarta", // untuk jam live di hero
+  available: true, // badge "Available for work"
   photo: "assets/img/profile.jpg", // foto hero
-  photoAlt: "assets/img/profile-alt.jpg", // foto section Education & CV
-  heroLeft: "Creative",
-  heroRight: "Developer",
+  photoAlt: "assets/img/profile-alt.jpg", // foto About & CV
+  heroLines: ["Design.", "Code.", "Play."], // baris ke-2 tampil bergaris tepi
   heroIntro:
-    "Pelajar Rekayasa Perangkat Lunak di SMK Telkom Purwokerto yang merancang, membangun, dan menghidupkan website, aplikasi, dan game.",
-  heroOutro:
-    "Dari sketsa di Figma sampai kode yang berjalan — setiap karya saya buat rapi, mudah dipakai, dan enak dilihat.",
+    "Hai, saya Jovian — pelajar Rekayasa Perangkat Lunak yang merancang tampilan, membangun website & aplikasi, dan membuat game yang seru dimainkan.",
   aboutLead:
-    "Halo, saya Ahnaf Ralip Jovian — panggil saja Jovian. Pelajar RPL di SMK Telkom Purwokerto yang jatuh cinta pada desain, kode, dan game.",
-  about:
-    "Saya lahir di Gunungkidul pada 27 Juli 2009. Saya senang mengubah ide menjadi tampilan yang rapi dan mudah dipakai — mulai dari desain di Figma, ilustrasi vektor, sampai website dan game yang benar-benar bisa dijalankan. Di luar ngoding, saya suka berenang dan bermain game, dua hal yang membuat saya tetap produktif dan terinspirasi.",
+    "Saya suka mengubah ide menjadi sesuatu yang bisa dilihat, disentuh, dan dimainkan.",
+  about: [
+    "Nama saya Ahnaf Ralip Jovian, lahir di Gunungkidul pada 27 Juli 2009. Sekarang saya belajar Rekayasa Perangkat Lunak di SMK Telkom Purwokerto.",
+    "Setiap projek saya mulai dari sketsa di Figma, lalu saya wujudkan jadi website, aplikasi, ilustrasi, atau game. Di luar ngoding, saya suka berenang dan bermain game — dua hal yang bikin saya tetap produktif dan terinspirasi.",
+  ],
+  facts: [
+    { label: "Sekolah", value: "SMK Telkom Purwokerto" },
+    { label: "Jurusan", value: "Rekayasa Perangkat Lunak" },
+    { label: "Asal", value: "Banyumas, Jawa Tengah" },
+    { label: "Hobi", value: "Renang & Game" },
+  ],
   cv: "", // contoh: "assets/cv-ahnaf-ralip-jovian.pdf" — kosongkan jika belum ada
   cvUpdated: "", // contoh: "September 2026"
-  statement:
-    "Every pixel has a purpose. I design with curiosity, build with care, and keep learning with every project I ship.",
 };
 
 /* Kontak & sosial media — kosongkan ("") yang tidak dipakai */
@@ -42,67 +49,64 @@ const CONTACT = {
   linkedin: "", // contoh: "ahnaf-ralip-jovian"
 };
 
-/* Teks pada pita berjalan */
-const MARQUEE = ["Frontend Developer", "UI/UX Designer", "Game Developer", "Graphic Designer", "Website Services"];
+/* Teks pada marquee */
+const MARQUEE = ["Frontend Developer", "UI/UX Designer", "Game Developer", "Graphic Designer", "Mobile Apps"];
 
-/* What I Do — bidang keahlian + jasa. image = gambar latar (opsional) */
+/* What I Do. Item dengan cta: true tampil sebagai kartu "Jasa" lebar */
 const SERVICES = [
   {
     title: "UI/UX Design",
-    lead: "Merancang tampilan aplikasi dan website yang jelas, nyaman, dan enak dilihat — dari wireframe sampai desain siap dikembangkan di Figma.",
-    points: ["Wireframe & user flow", "High-fidelity UI", "Prototype interaktif", "Desain responsif"],
+    lead: "Merancang tampilan aplikasi dan website yang jelas, nyaman, dan enak dilihat di Figma.",
+    points: ["Wireframe", "User flow", "High-fidelity UI", "Prototype"],
     image: "projects/arjov-shop/cover.jpg",
   },
   {
     title: "Web Development",
-    lead: "Mengubah desain menjadi website yang cepat, responsif, dan benar-benar bisa dipakai — dari landing page sampai web dengan login dan database.",
-    points: ["HTML, CSS & JavaScript", "PHP & MySQL", "Layout responsif", "Form & dashboard"],
+    lead: "Mengubah desain menjadi website responsif yang benar-benar bisa dipakai.",
+    points: ["HTML & CSS", "JavaScript", "PHP & MySQL", "Responsive"],
     image: "projects/usaha-kita/cover.jpg",
   },
   {
-    title: "Mobile Apps",
-    lead: "Membuat aplikasi Android sederhana dengan tampilan yang rapi dan alur yang mudah dipahami pengguna.",
-    points: ["Aplikasi Android (APK)", "Desain UI mobile", "Navigasi antar halaman", "Pengolahan data"],
-    image: "",
-  },
-  {
     title: "Game Development",
-    lead: "Membangun game 2D di Unity dengan C#: gerakan pemain, musuh, item, level, sampai menu dan musik.",
-    points: ["Game 2D di Unity (C#)", "Kontrol & gerakan pemain", "Musuh, koin & skor", "Level & menu game"],
+    lead: "Membangun game 2D di Unity dengan C#: gerakan, musuh, level, dan menu.",
+    points: ["Unity", "C#", "Level design", "Game UI"],
     image: "projects/explorer-journey/cover.jpg",
   },
   {
+    title: "Mobile Apps",
+    lead: "Membuat aplikasi Android sederhana dengan alur yang mudah dipahami pengguna.",
+    points: ["Android (APK)", "UI mobile", "Navigasi", "Data"],
+    image: "",
+  },
+  {
     title: "Graphic Design",
-    lead: "Membuat visual yang menarik perhatian: ilustrasi vektor, desain CV, poster, sampai konten media sosial.",
-    points: ["Ilustrasi vektor", "Desain CV", "Poster & konten sosmed", "Editing video"],
+    lead: "Ilustrasi vektor, desain CV, poster, sampai konten media sosial dan video.",
+    points: ["Vektor", "Desain CV", "Poster", "Editing video"],
     image: "projects/om-nom-stories/cover.jpg",
   },
   {
-    title: "Website Services",
+    title: "Jasa Pembuatan Website",
     lead: "Butuh website untuk usaha, organisasi, atau pribadi? Saya bantu dari desain sampai website kamu online dan siap dibagikan.",
-    points: ["Landing page & company profile", "Website portofolio", "Desain Figma → website", "Bantu online-kan & revisi"],
-    image: "projects/usaha-kita/1.jpg",
-    cta: true, // tampilkan tombol "Pesan Sekarang"
+    points: ["Landing page", "Company profile", "Website portofolio", "Figma → Website", "Bantu online-kan", "Revisi"],
+    cta: true,
   },
 ];
 
-/* Pendidikan */
-const EDUCATION_STORY =
-  "Perjalanan saya dimulai di SD Negeri 2 Ajibarang Kulon, lalu SMP Negeri 1 Ajibarang, tempat saya mulai penasaran dengan dunia teknologi. Sekarang saya belajar Rekayasa Perangkat Lunak di SMK Telkom Purwokerto, mendalami pemrograman, desain, dan pengembangan game.";
-
+/* Pendidikan — urutkan dari yang TERBARU. Tampil sebagai timeline dari kiri (terlama) ke kanan. */
 const EDUCATION = [
   {
     school: "SMK Telkom Purwokerto",
-    level: "Rekayasa Perangkat Lunak",
+    level: "SMK · Rekayasa Perangkat Lunak",
     period: "Sekarang",
-    description: "Belajar pengembangan web, basis data, desain UI/UX, dan pemrograman game.",
+    description: "Mendalami pengembangan web, basis data, desain UI/UX, dan pemrograman game.",
     map: "https://www.google.com/maps/search/?api=1&query=SMK+Telkom+Purwokerto",
+    current: true,
   },
   {
     school: "SMP Negeri 1 Ajibarang",
     level: "Sekolah Menengah Pertama",
     period: "",
-    description: "Tempat saya pertama kali tertarik dengan teknologi dan dunia digital.",
+    description: "Tempat saya pertama kali penasaran dengan teknologi dan dunia digital.",
     map: "https://www.google.com/maps/search/?api=1&query=SMP+Negeri+1+Ajibarang",
   },
   {
@@ -116,7 +120,8 @@ const EDUCATION = [
 
 /* Projek.
    category : salah satu kunci di PROJECT_CATEGORIES
-   role     : keterangan kecil di baris projek, contoh "Design & Development"
+   role     : keterangan kecil, contoh "Design & Development"
+   featured : true = kartu dibuat lebar (tampil paling depan)
    Kategori yang belum punya projek otomatis disembunyikan dari filter. */
 const PROJECT_CATEGORIES = {
   Web: "Web",
@@ -133,11 +138,13 @@ const PROJECTS = [
     category: "Web",
     role: "Design & Development",
     year: "2025",
+    summary: "Website pendamping UMKM untuk mulai berjualan online.",
     description:
       "Website pendamping UMKM untuk memulai bisnis online. Pengguna bisa mendaftar dan masuk, lalu mengakses beranda, panduan memulai bisnis (riset pasar, branding, pemasaran online, layanan pelanggan), katalog produk lokal unggulan, dan halaman komunitas.",
     tools: ["HTML", "CSS", "JavaScript"],
     images: ["cover.jpg", "1.jpg", "2.jpg"],
     links: { github: "https://github.com/arjjovian/mk3-usahakita" },
+    featured: true,
   },
   {
     slug: "explorer-journey",
@@ -145,6 +152,7 @@ const PROJECTS = [
     category: "Game",
     role: "Game Development",
     year: "2026",
+    summary: "Game platformer 2D yang dibuat dengan Unity & C#.",
     description:
       "Game platformer 2D. Pemain menjelajahi level, mengumpulkan koin, menghindari musuh yang berpatroli, dan mencapai titik finish. Dibuat dengan Unity dan C#, lengkap dengan menu pemilihan level, kamera yang mengikuti pemain, dan musik 8-bit.",
     tools: ["Unity", "C#"],
@@ -157,6 +165,7 @@ const PROJECTS = [
     category: "UI/UX",
     role: "UI/UX Design",
     year: "",
+    summary: "Desain landing page toko sepatu online di Figma.",
     description:
       "Desain landing page untuk toko sepatu online “Arjov Shop” di Figma. Fokus pada hero yang bersih, susunan produk yang menarik, dan tombol ajakan membeli yang jelas.",
     tools: ["Figma"],
@@ -169,6 +178,7 @@ const PROJECTS = [
     category: "Design",
     role: "Vector Illustration",
     year: "",
+    summary: "Ilustrasi vektor menu utama sebuah game.",
     description:
       "Ilustrasi vektor untuk tampilan menu utama game bertema Om Nom — logo, tombol Start / Menu / Exit, karakter, dan latar pemandangan dibuat sepenuhnya dengan vektor.",
     tools: ["Adobe Illustrator"],
@@ -181,6 +191,7 @@ const PROJECTS = [
     category: "Design",
     role: "Vector Illustration",
     year: "",
+    summary: "Ilustrasi vektor gedung klinik bergaya flat.",
     description: "Ilustrasi vektor bergaya flat dari gedung klinik Telkom Medika, menyederhanakan bentuk bangunan menjadi bidang warna yang bersih.",
     tools: ["Adobe Illustrator"],
     images: ["cover.jpg"],
@@ -192,6 +203,7 @@ const PROJECTS = [
     category: "Design",
     role: "Vector Illustration",
     year: "",
+    summary: "Potret diri dalam gaya vektor hitam-putih.",
     description: "Potret diri yang digambar ulang sebagai ilustrasi vektor hitam-putih dengan gaya garis minimalis.",
     tools: ["Adobe Illustrator"],
     images: ["cover.jpg"],
@@ -212,11 +224,35 @@ const PROJECTS = [
 */
 const CERTIFICATES = [];
 
-/* Tech & Stack */
+/* Tech & Stack. icon = class Devicon (https://devicon.dev), boleh kosong */
 const STACK = [
-  { group: "Languages", items: ["HTML", "CSS", "JavaScript", "PHP", "C#"] },
-  { group: "Data & Backend", items: ["MySQL"] },
-  { group: "Game Development", items: ["Unity"] },
-  { group: "Design & Media", items: ["Figma", "Adobe Illustrator", "Video Editing"] },
-  { group: "Tools", items: ["VS Code", "Git & GitHub", "Laragon"] },
+  {
+    group: "Languages",
+    items: [
+      { name: "HTML", icon: "devicon-html5-plain" },
+      { name: "CSS", icon: "devicon-css3-plain" },
+      { name: "JavaScript", icon: "devicon-javascript-plain" },
+      { name: "PHP", icon: "devicon-php-plain" },
+      { name: "C#", icon: "devicon-csharp-plain" },
+    ],
+  },
+  { group: "Data & Backend", items: [{ name: "MySQL", icon: "devicon-mysql-plain" }] },
+  { group: "Game", items: [{ name: "Unity", icon: "devicon-unity-plain" }] },
+  {
+    group: "Design & Media",
+    items: [
+      { name: "Figma", icon: "devicon-figma-plain" },
+      { name: "Illustrator", icon: "devicon-illustrator-plain" },
+      { name: "Video Editing", icon: "" },
+    ],
+  },
+  {
+    group: "Tools",
+    items: [
+      { name: "VS Code", icon: "devicon-vscode-plain" },
+      { name: "Git", icon: "devicon-git-plain" },
+      { name: "GitHub", icon: "devicon-github-original" },
+      { name: "Laragon", icon: "" },
+    ],
+  },
 ];

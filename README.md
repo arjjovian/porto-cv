@@ -1,7 +1,7 @@
 # Portofolio — Ahnaf Ralip Jovian
 
-Website portofolio pribadi bergaya monokrom editorial: hero, about, what I do (keahlian & jasa),
-education, selected work, certificates, tech stack, CV, dan kontak.
+Website portofolio pribadi bertema gelap dengan aksen lime: hero, about, services (keahlian & jasa),
+education, selected work, certificates, stats, tech stack, CV, dan kontak.
 Dibuat dengan HTML, CSS, dan JavaScript murni. Tidak perlu database atau build tool.
 
 ## Menjalankan
@@ -35,6 +35,7 @@ certificates/         gambar sertifikat
   category: "Mobile",             // Web | Mobile | Game | UI/UX | Design
   role: "UI/UX & Development",    // keterangan kecil di baris projek
   year: "2026",
+  summary: "Satu kalimat singkat untuk kartu.",
   description: "Penjelasan lengkap yang muncul saat kartu diklik.",
   tools: ["Kotlin", "Firebase"],
   images: ["cover.jpg", "1.jpg", "2.jpg"],
@@ -44,6 +45,7 @@ certificates/         gambar sertifikat
     figma: "https://figma.com/...",
     download: "https://.../app.apk",
   },
+  featured: true,                 // opsional: kartu dibuat lebar & tampil paling depan
 },
 ```
 
@@ -71,11 +73,11 @@ Tombol **Lihat CV** dan **Download PDF** akan muncul otomatis.
 
 ## Bagian lain di data.js
 
-- `SERVICES`: daftar di section What I Do. Pakai `cta: true` untuk menampilkan tombol "Pesan Sekarang".
-- `STACK`: baris-baris di section Tech & Stack.
-- `MARQUEE`: teks pada pita berjalan.
-- `PROFILE.heroLeft` / `heroRight`: dua kata besar di hero.
-- `PROFILE.statement`: kalimat besar yang menyala saat di-scroll.
+- `SERVICES`: kartu di section Services. Item dengan `cta: true` tampil sebagai kartu **Jasa** yang lebar.
+- `STACK`: kelompok tools di section Tech stack. `icon` memakai class dari [devicon.dev](https://devicon.dev).
+- `MARQUEE`: teks berjalan di bawah hero.
+- `PROFILE.heroLines`: tiga baris judul besar di hero.
+- Warna aksen bisa diganti lewat `--accent` di bagian atas `assets/css/style.css`.
 
 ## Tips gambar
 
