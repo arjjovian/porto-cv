@@ -271,6 +271,15 @@ const PROJECTS = [
 
 /* Sertifikat. images = file di folder certificates/ (gambar pertama jadi cover). */
 const CERTIFICATES = [
+    {
+    title: "Action AI Startup University: AI Essentials",
+    issuer: "Action AI Startup University ×] Underdogs",
+    year: "2026",
+    description: "Menyelesaikan AI Literacy Training Program dan diakui sebagai Act-preneur (Stage 1 Certified), yaitu pelaku yang menciptakan dampak lewat aksi nyata.",
+    tags: ["Artificial Intelligence", "AI Literacy"],
+    images: ["action-ai-essentials-1.jpg"],
+    link: "",
+  },
   {
     title: "AI Class ASEAN: AI for Youth",
     issuer: "ASEAN Foundation × Google.org",
