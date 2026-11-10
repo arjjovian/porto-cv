@@ -214,7 +214,7 @@ const PROJECTS = [
        description:
          "Game platformer 2D. Pemain menjelajahi level, mengumpulkan koin, menghindari musuh yang berpatroli, dan mencapai titik finish. Dibuat dengan Unity dan C#, lengkap dengan menu pemilihan level, kamera yang mengikuti pemain, dan musik 8-bit.",
        tools: ["Unity", "C#"],
-       images: ["cover2.jpg","Screenshot 2026-05-05 204823.png", "Screenshot 2026-05-07 090447.png"],
+       images: [ "Screenshot 2026-05-07 090447.png", "cover2.jpg","Screenshot 2026-05-05 204823.png"],
        links: { github: "https://github.com/arjjovian/ExplorerJourney-Unity" },
      },
   {
